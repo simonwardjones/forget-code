@@ -2,12 +2,66 @@
 <!-- MarkdownTOC autolink="true" bracket="round" indent="    "-->
 
 - [General Commands](#general-commands)
+    - [pwd](#pwd)
+    - [cd](#cd)
+    - [ls](#ls)
+    - [tree](#tree)
     - [ln -s](#ln--s)
 - [Looping](#looping)
 
 <!-- /MarkdownTOC -->
 
 ## General Commands
+
+### pwd
+
+Print current working directory
+
+### cd
+
+Change directory to the specified path
+
+### ls
+
+List the files in the given path 
+
+|**Options (can be grouped e.g. ls -alt)**| Function|
+|----------|---------|
+|-l | list with long format|
+|-s | list with file size|
+|-a | include hidden files|
+|-t | show time|
+|-i | show inode number|
+|-X | sort by extension|
+
+
+### tree
+
+The tree command creates a file structure diagram. 
+
+The -I 'pattern' argument can be used to exclude files/folders from the tree.
+
+Example 
+```bash
+mkdir test
+cd test
+mkdir dir1 dir2 dir3 dir4
+cd dir2
+touch file1.log file2.txt fil3.md
+cd ../..
+tree -I 'dir3' test/
+rm -r test/
+```
+will produce:
+```
+test/
+├── dir1
+├── dir2
+│   ├── fil3.md
+│   ├── file1.log
+│   └── file2.txt
+└── dir4
+```
 
 ### ln -s 
 **Symbolic link Command**
@@ -72,5 +126,3 @@ echo "That value should match up with the length of Scala"
 
 
 
-
-Genereal looping example on range
