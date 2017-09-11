@@ -30,7 +30,7 @@ In order to run a Scala application you will need to compile the Scala code. Thi
 
 
 ### sbt
-The scala build tool is used to compile run and package Scala code.
+The scala build tool is used to compile, run and package Scala code.
 
 In this directory there is a Scala Project called learnScala. I created this by running the following code in the sbt command prompt (To access the sbt command prompt (assuming it is on the PATH) simply enter sbt into the command line)
 
@@ -56,4 +56,6 @@ This will prompt you for a name and then creates a  hello world project structur
                 └── HelloSpec.scala
 ```
 
+#### assembly
+I have added a plugin to sbt that allows the creation of fat jar files containing all the dependencies. This optionally replaces the package command but will include all the dependencies.
 
