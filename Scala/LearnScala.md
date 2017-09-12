@@ -1,6 +1,6 @@
 # learnScala
 
-[back to ForgetCode](../README.md)
+<sub>[back to ForgetCode](../README.md)</sub>
 <!-- MarkdownTOC autolink="true" bracket="round" indent="    "-->
 
 - [About](#about)
