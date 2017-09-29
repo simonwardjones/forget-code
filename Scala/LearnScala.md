@@ -7,6 +7,7 @@
 - [Scala Set up](#scala-set-up)
     - [Compiling Scala](#compiling-scala)
     - [sbt](#sbt)
+- [Running the scala jar](#running-the-scala-jar)
 
 <!-- /MarkdownTOC -->
 
@@ -60,3 +61,5 @@ This will prompt you for a name and then creates a  hello world project structur
 #### assembly
 I have added a plugin to sbt that allows the creation of fat jar files containing all the dependencies. This optionally replaces the package command but will include all the dependencies.
 
+## Running the scala jar 
+The jar can be executed on the jvm using ```scala example.jar``` or ```jave -jar example.jar```

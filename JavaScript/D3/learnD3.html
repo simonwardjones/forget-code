@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Learn D3</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.0/d3.min.js"></script>
+</head>
+<body>
+</body>
+
+<script type="text/javascript">
+
+// Learn D3 in this script here!
+
+// Selecting and appending to DOM elements
+
+// Create body selection
+var body = d3.select("body")
+
+// Create main div
+var main_div = body.append("div")
+				.attr("class","main-div") // Used to set DOM attributes
+		        .style("display","flex") // flex the internal elements
+		       	.style("flex-direction", "column") //Set the Flex direction
+		        .style("align-items","stretch") //strecth the internal items
+		        .style("flex-wrap","wrap") 
+		        .style("padding","10px")
+
+
+// Example svg sizes
+var w = 500,
+	h = 300
+
+var header = main_div.append("h1")
+    .text("Learn D3")
+
+// Examples with div containing example header and SVG
+
+
+// Example 1 SVG elements
+
+var example1 = main_div.append("div")
+	.attr("class","Example1")
+    .style("display","block") // elements inside blocks appear on new lines
+    .style("padding","10px")
+
+var header1 = example1.append("h2")
+				.text("Example 1 - SVG elements")
+
+var svg1 = example1.append("svg")
+    .attr("width",w)
+    .attr("height",h)
+    .style("background","#f4f4f4")
+
+// Create Rectabgle element
+var rect = svg1.append("rect")
+        .attr("x", 50)
+        .attr("y", 100)
+        .attr("width", 100)
+        .attr("height", 100)
+        .style("fill","#87CEFA")
+
+// Create Circle Element
+var circ = svg1.append("circle")
+            .attr("cx",250)
+            .attr("cy",150)
+            .attr("r",50)
+            .style("fill","#87CEFA")
+
+
+
+
+
+// Example 2
+
+var example2 = main_div.append("div")
+	.attr("class","Example2")
+    .style("display","block")
+    .style("padding","10px")
+
+var header2 = example2.append("h2")
+			.text("Example 2")
+
+var svg2 = example2.append("svg")
+    .attr("width",w)
+    .attr("height",h)
+    .style("background","#f4f4f4")
+
+
+// Example 3
+var example3 = main_div.append("div")
+                	.attr("class","Example2")
+				    .style("display","block")
+				    .style("padding","10px")
+
+
+var header3 = example3.append("h2")
+			.text("Example 3")
+
+
+var pallet_container = example3.append("div")
+							.style("display","flex")
+							.style("flex-direction","row")
+							.style("flex-wrap","wrap")
+
+var length = 100,
+color = d3.scaleLinear().domain([1,length])
+  .interpolate(d3.interpolateHcl)
+  .range([d3.rgb("#007AFF"), d3.rgb('#FFF500')]);
+
+
+for (var i = 0; i < length; i++) {
+    pallet_container.append('div')
+    .attr("class","pallet-item")
+    .style("width","40px")
+    .style("height","40px")
+    .style("margin","1px")
+    .style("background-color", function (d) {
+      return color(i);
+    })
+    .text(i+1)
+    .style("font-size", "8px")
+    .style("text-align", "center")
+    .style("display","flex")
+    .style("align-items","center")
+    .style("justify-content","center")
+};
+
+
+</script>
+
+</html>

@@ -6,6 +6,7 @@
 - [General Commands](#general-commands)
     - [pwd](#pwd)
     - [cd](#cd)
+    - [open](#open)
     - [ls](#ls)
     - [tree](#tree)
     - [ln -s](#ln--s)
@@ -22,6 +23,10 @@ Print current working directory
 ### cd
 
 Change directory to the specified path
+
+### open
+
+Opens the file using the default application for the file extension.
 
 ### ls
 
@@ -73,6 +78,8 @@ A symbolic link is like a shortcut from one file to another. The contents of a s
 Each file in your file system is identified by a number called an inode.
 
 A hard link lets you assign a different name to a file in a different location but essentially it is exactly the same file. The key that links the files together is the inode number. Don't use a hard link Simon as the inode number changes on saving but wont update the link.
+
+This is useful to add files to the "usr/local/bin" so that they are on the PATH
 
 ```bash
 echo "Make a test  with two sub directories with a file in each"

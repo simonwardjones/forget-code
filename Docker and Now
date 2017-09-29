@@ -1,0 +1,46 @@
+Docker and Now
+
+ docker run -v "$PWD":/var/task/ -it lambci/lambda:build-python3.6 bash
+
+ run docker image lambci/lambda:build-python3.6
+ -i interactive
+ -t terminal
+ -v "$PWD":/var/task/. mount the pwd on var/task in the container machine
+
+ exit with cntl D
+
+ ok let's test the file on lambda using 
+
+ docker run -v $PWD:/var/task lambci/lambda:python3.6 ngrams.my_handler
+
+
+# build image from docker file
+
+IMAGE :- An image is an inert, immutable, file that’s essentially a snapshot of a container. 
+CONTAINER :- To use a programming metaphor, if an image is a class, then a container is an instance of a class—a runtime object.
+
+building an image from local folder (.) with name dstoolbox with docker filer:
+$ docker build -t dstoolbox .
+
+$ docker run -it --name dsToolboxRunner -p 5000:5000 dstoolbox
+
+# check it is running:
+$ docker ps
+# note this just just shows the runnin ones, to see all use
+$ docker ps -a 
+# to delete all us this (q restricts the sub cmd to give just ids)
+$ docker rm $(docker ps -a -q)
+# or use this to get rid of the exited ones:
+$ docker rm -f "filter=excited"
+
+# once running just ctrl c to stop or exit it
+
+# Then you can start it using  (add i to see the output on command line)
+$ docker start dsToolboxRunner
+
+# Stop with 
+$ docker start dsToolboxRunner
+
+When depolying with now simply use
+$ now -d --name simon
+now have to be careful what files it ignores (as standard it ignores .gitignored files)
