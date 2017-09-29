@@ -126,6 +126,105 @@ for (var i = 0; i < length; i++) {
 };
 
 
+// Example 4 Bar Charts
+var example4 = main_div.append("div")
+                    .attr("class","Example2")
+                    .style("display","block")
+                    .style("padding","10px")
+
+
+var header4 = example4.append("h2")
+            .text("Example 4 - Bar Chart")
+
+var Chart = example4.append("svg")
+    .attr("width",w)
+    .attr("height",h)
+    .style("background","#f4f4f4")
+
+//var data  = [123,321,433,121,754,292,937,273,374,654];
+
+// Let us first create the data using a javascript loop 
+var data = []
+var bar_count = 50
+for(var i = 0; i < bar_count; i++){
+    data.push(Math.round(Math.random() * 1000));
+}
+
+// Sort the data using the sort method of an array (the argument is a comparison function)
+data.sort(function(a,b){
+    return a - b ;
+})
+
+// Set the Chart height and width variables
+var chart_height = h;
+var chart_width = w;
+
+// Create a margin object could use var margin = {}
+var margin = new Object()
+margin.top = 30;
+margin.bottom = 30;
+margin.right = 30;
+margin.left = 30;
+
+// Create Scales for x axis, y axis and bar colours
+// Note the x adn y scales are for the region of the chart excluding the margins
+var xScale = d3.scaleBand()
+                .domain(d3.range(data.length))
+                .range([0,chart_width - margin.left - margin.right])
+                .padding(0.05)
+                
+var yScale = d3.scaleLinear()
+                .domain([0,d3.max(data)])
+                .range([0,chart_height - margin.top - margin.bottom])
+
+var bar_colours = d3.scaleLinear()
+                    .domain([0, data.length])
+                    .interpolate(d3.interpolateHcl)
+                    .range([d3.rgb("#007AFF"), d3.rgb('#FFF500')]);
+
+// call the axis function on the svg group to create the axis elements
+Chart.append("g")
+.attr("class", "axis axis--x")
+.attr("transform", "translate(" + margin.left + "," + (chart_height - margin.bottom) + ")")
+.call(d3.axisBottom(xScale)
+        .tickValues(d3.range(4, 50, 5))
+        .tickFormat(function(d) { return d + 1; }));
+
+// Add the bars (Start them with 0 height)
+var bars = Chart.selectAll("rects")
+                    .data(data)
+                    .enter()
+                    .append("rect")
+                        .attr("height", function(d){
+                            return 0;
+                        })
+                        .attr("width", function(d,i){
+                            return xScale.bandwidth();
+                        })
+                        .attr("x", function(d,i){
+                            return margin.left + xScale(i);
+                        })
+                        .attr("y", function(d,i){
+                            return chart_height - margin.bottom ;
+                        })
+                        .style("fill", function(d,i){
+                            return bar_colours(i)
+                        })
+
+// transition the bars to full height (Use delay on each element for nice effect)
+bars.transition()
+.attr("height", function(d){
+    return yScale(d);
+})
+.attr("y", function(d,i){
+    return chart_height - yScale(d) - margin.top;
+})
+.duration(2000)
+.delay(function(d,i){
+    return i * 30 ;
+})
+
+
 </script>
 
 </html>
