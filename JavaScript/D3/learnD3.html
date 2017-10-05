@@ -20,10 +20,12 @@ var body = d3.select("body")
 var main_div = body.append("div")
 				.attr("class","main-div") // Used to set DOM attributes
 		        .style("display","flex") // flex the internal elements
-		       	.style("flex-direction", "column") //Set the Flex direction
+		       	.style("flex-direction", "column") //Set the Flex direction ie main axis dierection 
 		        .style("align-items","stretch") //strecth the internal items
-		        .style("flex-wrap","wrap") 
 		        .style("padding","10px")
+                .style("align-items","center") 
+                .style("margin","10px")
+
 
 
 // Example svg sizes
@@ -57,20 +59,19 @@ var rect = svg1.append("rect")
         .attr("y", 100)
         .attr("width", 100)
         .attr("height", 100)
-        .style("fill","#87CEFA")
+        .style("fill","#007AFF")
 
 // Create Circle Element
 var circ = svg1.append("circle")
             .attr("cx",250)
             .attr("cy",150)
             .attr("r",50)
-            .style("fill","#87CEFA")
+            .style("fill","#007AFF")
 
 
 
 
-
-// Example 2
+// Example 2 - Scales
 
 var example2 = main_div.append("div")
 	.attr("class","Example2")
@@ -78,7 +79,7 @@ var example2 = main_div.append("div")
     .style("padding","10px")
 
 var header2 = example2.append("h2")
-			.text("Example 2")
+			.text("Example 2 - Scales")
 
 var svg2 = example2.append("svg")
     .attr("width",w)
@@ -86,16 +87,77 @@ var svg2 = example2.append("svg")
     .style("background","#f4f4f4")
 
 
-// Example 3
+var data_example = [0.4,1.3,2,3,4.5,5,6.7,8,8.9]
+
+// Linear scale for x poistion
+var myLinearScaleX = d3.scaleLinear()
+        .domain([0,10])
+        .range([0,450])
+
+// Linear scale for y poistion
+var myLinearScaleY = d3.scaleLinear()
+        .domain([0,10])
+        .range([0,300])
+
+//for circle size
+var sqrtScale = d3.scaleSqrt()
+  .domain([0, 100])
+  .range([0, 30]);
+
+// Interpolator scale 
+var sequentialScale = d3.scaleSequential()
+  .domain([0, 10])
+  .interpolator(d3.interpolateRainbow);
+
+svg2.selectAll("circle")
+    .data(data_example)
+    .enter()
+    .append("circle")
+    .attr("r",function(d){
+        return sqrtScale(d)
+    })
+    .attr("cy",function(d){
+        return myLinearScaleY(d)
+    })
+    .style("fill",function(d){
+        return sequentialScale(d)
+    })
+    .attr("cx", function(d){
+        return myLinearScaleX(d)
+    })
+
+svg2.selectAll("text")
+    .data(data_example)
+    .enter()
+    .append("text")
+    .style("justify-content","center")
+    .attr("y",80)
+    .attr("font-size",10)
+    .attr("text-anchor","middle")
+    .attr("justify-content","center")
+    .attr("x", function(d){
+        return myLinearScaleX(d) + 40 
+    })
+    .attr("y", function(d){
+        return myLinearScaleY(d) 
+    })
+    .text(function(d){
+        return d + " --> " + myLinearScaleX(d) 
+    })
+
+
+
+
+// Example 3 DOM elements with D3
 var example3 = main_div.append("div")
-                	.attr("class","Example2")
+                	.attr("class","Example3")
 				    .style("display","block")
+                    .style("width", w + "px")
 				    .style("padding","10px")
 
 
 var header3 = example3.append("h2")
 			.text("Example 3")
-
 
 var pallet_container = example3.append("div")
 							.style("display","flex")
@@ -106,6 +168,7 @@ var length = 100,
 color = d3.scaleLinear().domain([1,length])
   .interpolate(d3.interpolateHcl)
   .range([d3.rgb("#007AFF"), d3.rgb('#FFF500')]);
+
 
 
 for (var i = 0; i < length; i++) {
@@ -119,11 +182,11 @@ for (var i = 0; i < length; i++) {
     })
     .text(i+1)
     .style("font-size", "8px")
-    .style("text-align", "center")
     .style("display","flex")
     .style("align-items","center")
     .style("justify-content","center")
 };
+
 
 
 // Example 4 Bar Charts
