@@ -9,6 +9,9 @@
     - [Key Concepts in D3](#key-concepts-in-d3)
         - [Selecting and appending DOM elements](#selecting-and-appending-dom-elements)
         - [Data Joins](#data-joins)
+- [Node and NPM](#node-and-npm)
+    - [Overview](#overview)
+    - [Install and Update Node](#install-and-update-node)
 
 <!-- /MarkdownTOC -->
 
@@ -74,4 +77,21 @@ d3.selectAll('circle')
 
   u.exit().remove();
 }
+```
+
+# Node and NPM
+
+## Overview
+
+When some talks about npm they are either refering to 
+  - The website (primary tool for users to discover packages)
+  - The registory (database of modules)
+  - The npm client (command line tool - how developers publish their packages on the registry )
+
+## Install and Update Node
+
+Node comes with npm but npm is updated often to update run 
+```bash
+sudo npm install npm@latest -g
+npm -v
 ```

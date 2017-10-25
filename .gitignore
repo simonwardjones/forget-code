@@ -1,7 +1,8 @@
 .DS_Store
 target/
-Python/.ipynb_checkpoints/
-Python/derby.log
-Python/metastore_db/
+.ipynb_checkpoints/
+derby.log
+metastore_db/
+__pycache__
 
 

@@ -10,6 +10,8 @@
     - [ls](#ls)
     - [tree](#tree)
     - [ln -s](#ln--s)
+    - [dirname](#dirname)
+    - [basename](#basename)
 - [Looping](#looping)
 
 <!-- /MarkdownTOC -->
@@ -108,6 +110,30 @@ rm -r test/
 ```
 
 
+### dirname
+**Directory from full path**
+
+The dirname retrieves the directory path from a full path 
+
+```bash
+file_name="this/is/a/long/file/path/with/one/textfile.txt"
+echo $file_name
+echo $(dirname $file_name)
+echo $(basename $file_name)
+```
+
+### basename
+**File from full path**
+
+The dirname retrieves the directory path from a full path 
+
+```bash
+file_name="this/is/a/long/file/path/with/one/textfile.txt"
+echo $file_name
+echo $(dirname $file_name)
+echo $(basename $file_name)
+```
+
 ## Looping
 
 looping on an array example I actually used to start this repo:
@@ -132,6 +158,7 @@ echo "We can print the leght of an element e.g. \${#languages[1]} = ${#languages
 echo "That value should match up with the length of Scala"
 
 ```
+
 
 
 
