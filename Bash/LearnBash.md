@@ -9,9 +9,12 @@
     - [open](#open)
     - [ls](#ls)
     - [tree](#tree)
+    - [cp](#cp)
     - [ln -s](#ln--s)
     - [dirname](#dirname)
     - [basename](#basename)
+    - [whoami](#whoami)
+    - [chown](#chown)
 - [Looping](#looping)
 
 <!-- /MarkdownTOC -->
@@ -48,7 +51,7 @@ List the files in the given path
 
 The tree command creates a file structure diagram. 
 
-The -I 'pattern' argument can be used to exclude files/folders from the tree.
+The -I 'pattern' argument can be used to exclude files/folders from the tree e.g. `tree -I "venv|__pycache__|target" .`
 
 Example 
 ```bash
@@ -71,6 +74,36 @@ test/
 │   └── file2.txt
 └── dir4
 ```
+
+### cp
+
+The cp command is used to make copies of files and directories
+
+|**Options (can be grouped e.g. ls -alt)**| Function|
+|----------|---------|
+|-i | prompt before overwrite|
+|-r | copy directories recursively|
+
+
+```bash
+echo "Make an example directory which we will make some files in for the demo"
+mkdir testFolder && cd testFolder
+echo "create a text file example"
+touch textFileOne.txt
+ls
+echo "See that text file and now we will copy it"
+cp textFileOne.txt textFileTwo.txt
+ls
+echo "See it is there"
+cd ..
+ls
+echo "Now copy the whole test"
+cp -r testFolder testFolder2
+tree -P "test*"
+rm -r testFolder testFolder2
+echo "Clean Up !"
+```
+
 
 ### ln -s 
 **Symbolic link Command**
@@ -133,6 +166,14 @@ echo $file_name
 echo $(dirname $file_name)
 echo $(basename $file_name)
 ```
+
+### whoami
+
+The whoami command returns the current user
+
+### chown
+
+The chown command changes the owener of a file
 
 ## Looping
 
