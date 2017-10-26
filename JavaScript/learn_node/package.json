@@ -1,0 +1,21 @@
+{
+  "name": "learn_node",
+  "version": "1.0.0",
+  "description": "Learning node",
+  "main": "app.js",
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "author": "Simon Ward-Jones <simon.Ward-Jones@beamly.com>",
+  "license": "ISC",
+  "key Words": [
+    "Learning",
+    "node"
+  ]
+}
