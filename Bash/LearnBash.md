@@ -15,6 +15,7 @@
     - [basename](#basename)
     - [whoami](#whoami)
     - [chown](#chown)
+    - [test or](# )
 - [Looping](#looping)
 
 <!-- /MarkdownTOC -->
@@ -174,6 +175,20 @@ The whoami command returns the current user
 ### chown
 
 The chown command changes the owener of a file
+
+### test or [ ]
+
+The command `test` is used to evaluate a conditional expressions
+
+Note:
+`test  expresion` = `[ expresion ]`
+
+for Example the following use of test checks whether the filename is a folder
+```bash
+if test -d node_modules/ ; then echo 1; else echo 2; fi
+if [ -d node_modules/ ] ; then echo 1; else echo 2; fi
+if [ "fg" = "fg" ]; then echo yes; else echo "no"; fi
+```
 
 ## Looping
 

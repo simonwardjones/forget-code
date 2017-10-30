@@ -44,5 +44,12 @@ describe('add()', function() {
   });
 });
 
-describe('Simon',function() {})
+describe('Simon',function() {
+	it("Using setTimeout to simulate asynchronous code!", function(done){
+	    setTimeout(function() {
+	        console.log("test")
+	        done();
+	    }, 200);
+	});
 
+})
