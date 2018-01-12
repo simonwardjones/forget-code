@@ -5,6 +5,8 @@
 <!-- MarkdownTOC autolink="true" bracket="round" indent="    "-->
 
 - [General](#general)
+- [MDN Javascript Guide](#mdn-javascript-guide)
+    - [Introduction](#introduction)
 - [D3](#d3)
     - [Key Concepts in D3](#key-concepts-in-d3)
         - [Selecting and appending DOM elements](#selecting-and-appending-dom-elements)
@@ -22,6 +24,14 @@
 <!-- /MarkdownTOC -->
 
 # General
+
+# MDN Javascript Guide
+
+I am working through the guide (code in learn_javascript.js)
+see `https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/` for solid guide
+
+## Introduction
+
 
 # D3
 Check this link out: [D3 in Depth](http:3indepth.com/introduction/)

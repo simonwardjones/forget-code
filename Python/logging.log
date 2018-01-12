@@ -1,0 +1,32 @@
+2017-12-06 11:30:43,921 - Examplelogger - INFO - Bespoke message
+2017-12-06 11:30:55,973 - Examplelogger - DEBUG - Bespoke message
+2017-12-06 11:31:02,408 - Examplelogger - DEBUG - Bespoke message only for file
+2017-12-06 11:31:12,196 - Examplelogger - INFO - 4 added to 3 to give 7
+2017-12-06 11:31:17,770 - Examplelogger - INFO - 4 added to 0 to give 4
+2017-12-06 11:32:50,230 - Examplelogger - DEBUG - Bespoke message only for file
+2017-12-06 11:32:50,847 - Examplelogger - INFO - 4 added to 3 to give 7
+2017-12-06 11:32:51,354 - Examplelogger - WARNING - division by zero
+2017-12-06 11:33:02,700 - Examplelogger - DEBUG - Bespoke message only for file
+2017-12-06 11:33:03,597 - Examplelogger - INFO - 4 added to 3 to give 7
+2017-12-06 11:33:03,885 - Examplelogger - ERROR - division by zero
+2017-12-06 11:33:46,027 - Examplelogger - DEBUG - Bespoke message only for file
+2017-12-06 11:33:46,503 - Examplelogger - INFO - 4 added to 3 to give 7
+2017-12-06 11:33:46,749 - Examplelogger - ERROR - division by zero
+2017-12-06 11:34:04,571 - Examplelogger - DEBUG - Bespoke message only for file
+2017-12-06 11:34:05,564 - Examplelogger - INFO - 4 added to 3 to give 7
+2017-12-06 11:34:05,764 - Examplelogger - ERROR - division by zero
+2017-12-06 11:34:31,373 - Examplelogger - DEBUG - Bespoke message only for file
+2017-12-06 11:34:31,820 - Examplelogger - INFO - 4 added to 3 to give 7
+2017-12-06 11:34:35,396 - Examplelogger - ERROR - division by zero
+2017-12-06 11:35:25,449 - Examplelogger - DEBUG - Bespoke message only for file
+2017-12-06 11:35:26,050 - Examplelogger - INFO - 4 added to 3 to give 7
+2017-12-06 11:35:26,617 - Examplelogger - ERROR - division by zero
+2017-12-06 11:35:39,542 - Examplelogger - DEBUG - Bespoke message only for file
+2017-12-06 11:35:40,056 - Examplelogger - INFO - 4 added to 3 to give 7
+2017-12-06 11:35:40,304 - Examplelogger - ERROR - division by zero
+2017-12-07 10:01:35,293 - Examplelogger - DEBUG - Bespoke message only for file
+2017-12-07 10:01:35,293 - Examplelogger - DEBUG - Bespoke message only for file
+2017-12-07 10:01:35,299 - Examplelogger - INFO - 4 added to 3 to give 7
+2017-12-07 10:01:35,299 - Examplelogger - INFO - 4 added to 3 to give 7
+2017-12-07 10:01:35,309 - Examplelogger - ERROR - division by zero
+2017-12-07 10:01:35,309 - Examplelogger - ERROR - division by zero

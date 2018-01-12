@@ -168,6 +168,14 @@ echo $(dirname $file_name)
 echo $(basename $file_name)
 ```
 
+The basename function takes an optional second argument to remove suffix e.g.
+```bash
+file_name="this/is/a/long/file/path/with/one/textfile.txt"
+echo $file_name
+echo $(dirname $file_name)
+echo $(basename $file_name 'txt')
+``` 
+
 ### whoami
 
 The whoami command returns the current user
