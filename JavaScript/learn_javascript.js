@@ -158,3 +158,4 @@ finally {
 // fulfilled: successful operation
 // rejected: failed operation.
 // settled: the Promise is either fulfilled or rejected, but not pending.
+
