@@ -6,3 +6,7 @@ metastore_db/
 __pycache__
 node_modules/
 
+.Rproj.user
+.Rhistory
+.RData
+R.Rproj
