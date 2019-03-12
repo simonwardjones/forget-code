@@ -1,26 +1,40 @@
 # learnBash
 
 <sub>[Back to ForgetCode](../README.md)</sub>
-<!-- MarkdownTOC autolink="true" bracket="round" indent="    "-->
+<!-- MarkdownTOC autolink="true" bracket="round" indent="   "  -->
 
+- [linux Phrasebook](#linux-phrasebook)
 - [General Commands](#general-commands)
-    - [pwd](#pwd)
-    - [cd](#cd)
-    - [open](#open)
-    - [ls](#ls)
-    - [tree](#tree)
-    - [cp](#cp)
-    - [ln -s](#ln--s)
-    - [dirname](#dirname)
-    - [basename](#basename)
-    - [whoami](#whoami)
-    - [chown](#chown)
-    - [test or](# )
+   - [pwd](#pwd)
+   - [cd](#cd)
+   - [open](#open)
+   - [ls](#ls)
+   - [tree](#tree)
+   - [cp](#cp)
+   - [ln -s](#ln--s)
+   - [dirname](#dirname)
+   - [basename](#basename)
+   - [whoami](#whoami)
+   - [chown](#chown)
+   - [test or](# )
 - [Looping](#looping)
 
 <!-- /MarkdownTOC -->
 
+
+## linux Phrasebook
+
+This book gives a good covering of basic bash. I have written a summary 
+in notebook form. To use this install jupyter and then run the following:
+
+```bash
+pip install bash_kernel
+python -m bash_kernel.install
+```
+
+
 ## General Commands
+
 
 ### pwd
 
@@ -182,7 +196,7 @@ The whoami command returns the current user
 
 ### chown
 
-The chown command changes the owener of a file
+The chown command changes the owner of a file
 
 ### test or [ ]
 
