@@ -37,7 +37,7 @@ def encode(argument, output=None, quiet=None, n_repeat=None):
 
     \b
     minimal example:
-    >>> emjois :wave: -3
+    >>> emjois :wave: -n 3
     >>> 👋👋👋
     """
     processed_input = emojis.encode(' '.join(argument)) * n_repeat
@@ -80,8 +80,7 @@ def list(category=None):
         'travel': 'Travel & Places'}
     category = lookup_category.get(category)
     if category:
-        emojis_list = [e
-                       for e in EMOJI_DB if e.category == category]
+        emojis_list = [e for e in EMOJI_DB if e.category == category]
     else:
         emojis_list = EMOJI_DB
     output = '\n'.join('{emoji} - {emoji_name}'.format(
