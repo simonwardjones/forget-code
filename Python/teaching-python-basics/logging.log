@@ -30,3 +30,6 @@
 2017-12-07 10:01:35,299 - Examplelogger - INFO - 4 added to 3 to give 7
 2017-12-07 10:01:35,309 - Examplelogger - ERROR - division by zero
 2017-12-07 10:01:35,309 - Examplelogger - ERROR - division by zero
+2020-01-26 13:47:29,702 - Examplelogger - DEBUG - Bespoke message only for file
+2020-01-26 13:47:30,202 - Examplelogger - INFO - 4 added to 3 to give 7
+2020-01-26 13:47:30,742 - Examplelogger - ERROR - division by zero
