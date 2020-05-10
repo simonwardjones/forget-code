@@ -13,3 +13,4 @@ R.Rproj
 **venv
 **.egg-info/
 .vscode
+mnist/
