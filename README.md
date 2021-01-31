@@ -1,19 +1,5 @@
 # Forget Code
-<!-- MarkdownTOC autolink="true" bracket="round" indent="    "-->
-
-- [About](#about)
-
-<!-- /MarkdownTOC -->
 
 ## About 
 
-This Repo will contain subfolders for each useful Tool/Language for DataScience. 
-Each Subfolder has it's own readme linked below:
-
-- [Bash](./Bash/LearnBash.md)
-- [JavaScript](./JavaScript/LearnJavaScript.md)
-- [Python](./Python/LearnPython.md)
-- [Scala](./Scala/LearnScala.md)
-- [Spark](./Spark/LearnSpark.md)
-- [SQL](./SQL/LearnSQL.md)
-- [Sublime](./Sublime/LearnSublime.md)
+General learning repo for code

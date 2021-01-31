@@ -4,22 +4,23 @@
 
 <!-- MarkdownTOC autolink="true" bracket="round" indent="    "-->
 
+- [learnJavaScript](#learnjavascript)
 - [General](#general)
 - [MDN Javascript Guide](#mdn-javascript-guide)
-    - [Introduction](#introduction)
+  - [Introduction](#introduction)
 - [D3](#d3)
-    - [Key Concepts in D3](#key-concepts-in-d3)
-        - [Selecting and appending DOM elements](#selecting-and-appending-dom-elements)
-        - [Data Joins](#data-joins)
+  - [Key Concepts in D3](#key-concepts-in-d3)
+    - [Selecting and appending DOM elements](#selecting-and-appending-dom-elements)
+    - [Data Joins](#data-joins)
 - [Node and NPM](#node-and-npm)
-    - [Overview](#overview)
-    - [Install and Update Node](#install-and-update-node)
-    - [Installing npm packages](#installing-npm-packages)
-        - [package.json](#packagejson)
-    - [Update packages locally](#update-packages-locally)
-    - [Remove packages](#remove-packages)
-    - [jshint package](#jshint-package)
-    - [Mocha package](#mocha-package)
+  - [Overview](#overview)
+  - [Install and Update Node](#install-and-update-node)
+  - [Installing npm packages](#installing-npm-packages)
+    - [package.json](#packagejson)
+  - [Update packages locally](#update-packages-locally)
+  - [Remove packages](#remove-packages)
+  - [jshint package](#jshint-package)
+  - [Mocha package](#mocha-package)
 
 <!-- /MarkdownTOC -->
 

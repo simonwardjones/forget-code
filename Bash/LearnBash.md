@@ -3,21 +3,22 @@
 <sub>[Back to ForgetCode](../README.md)</sub>
 <!-- MarkdownTOC autolink="true" bracket="round" indent="   "  -->
 
-- [linux Phrasebook](#linux-phrasebook)
-- [General Commands](#general-commands)
-   - [pwd](#pwd)
-   - [cd](#cd)
-   - [open](#open)
-   - [ls](#ls)
-   - [tree](#tree)
-   - [cp](#cp)
-   - [ln -s](#ln--s)
-   - [dirname](#dirname)
-   - [basename](#basename)
-   - [whoami](#whoami)
-   - [chown](#chown)
-   - [test or](# )
-- [Looping](#looping)
+- [learnBash](#learnbash)
+  - [linux Phrasebook](#linux-phrasebook)
+  - [General Commands](#general-commands)
+    - [pwd](#pwd)
+    - [cd](#cd)
+    - [open](#open)
+    - [ls](#ls)
+    - [tree](#tree)
+    - [cp](#cp)
+    - [ln -s](#ln--s)
+    - [dirname](#dirname)
+    - [basename](#basename)
+    - [whoami](#whoami)
+    - [chown](#chown)
+    - [test or [ ]](#test-or--)
+  - [Looping](#looping)
 
 <!-- /MarkdownTOC -->
 

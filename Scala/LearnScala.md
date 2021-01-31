@@ -3,11 +3,13 @@
 <sub>[back to ForgetCode](../README.md)</sub>
 <!-- MarkdownTOC autolink="true" bracket="round" indent="    "-->
 
-- [About](#about)
-- [Scala Set up](#scala-set-up)
+- [learnScala](#learnscala)
+  - [About](#about)
+  - [Scala Set up](#scala-set-up)
     - [Compiling Scala](#compiling-scala)
     - [sbt](#sbt)
-- [Running the scala jar](#running-the-scala-jar)
+      - [assembly](#assembly)
+  - [Running the scala jar](#running-the-scala-jar)
 
 <!-- /MarkdownTOC -->
 
