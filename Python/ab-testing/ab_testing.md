@@ -2,7 +2,7 @@
 
 ---
 - [The ultimate guide to AB testing](#the-ultimate-guide-to-ab-testing)
-  - [- Things to include in my write up](#ullithings-to-include-in-my-write-upliul)
+  - [- Things to include in my write up](#--things-to-include-in-my-write-up)
   - [Reviewing articles on AB testing](#reviewing-articles-on-ab-testing)
       - [Article 1 - https://towardsdatascience.com/exploring-bayesian-a-b-testing-with-simulations-7500b4fc55bc (Blake Arnold)](#article-1---httpstowardsdatasciencecomexploring-bayesian-a-b-testing-with-simulations-7500b4fc55bc-blake-arnold)
       - [Article 2 - https://medium.com/convoy-tech/the-power-of-bayesian-a-b-testing-f859d2219d5 (Michael Frasco)](#article-2---httpsmediumcomconvoy-techthe-power-of-bayesian-a-b-testing-f859d2219d5-michael-frasco)
@@ -18,10 +18,12 @@
       - [Article 12 - http://www.qubit.com/wp-content/uploads/2017/12/qubit-research-ab-test-results-are-illusory.pdf](#article-12---httpwwwqubitcomwp-contentuploads201712qubit-research-ab-test-results-are-illusorypdf)
       - [Article 13 - https://mobiledevmemo.com/its-time-to-abandon-a-b-testing/](#article-13---httpsmobiledevmemocomits-time-to-abandon-a-b-testing)
       - [Article 14 - https://link.springer.com/article/10.3758/s13423-016-1221-4](#article-14---httpslinkspringercomarticle103758s13423-016-1221-4)
-      - [Article 15 -  http://elem.com/~btilly/ab-testing-multiple-looks/part1-rigorous.html](#article-15---httpelemcombtillyab-testing-multiple-lookspart1-rigoroushtml)
+      - [Article 15 -  http://elem.com/~btilly/ab-testing-multiple-looks/part1-rigorous.html](#article-15----httpelemcombtillyab-testing-multiple-lookspart1-rigoroushtml)
       - [Article 16 - https://hookedondata.org/guidelines-for-ab-testing/](#article-16---httpshookedondataorgguidelines-for-ab-testing)
       - [Article 17 - http://elem.com/~btilly/ab-testing-multiple-looks/part1-rigorous.html (Ben Tilly)](#article-17---httpelemcombtillyab-testing-multiple-lookspart1-rigoroushtml-ben-tilly)
     - [Article 18 - https://rugg2.github.io/AB%20testing%20-%20a%20simple%20explanation%20of%20what%20power%20analysis%20does.html](#article-18---httpsrugg2githubioab20testing20-20a20simple20explanation20of20what20power20analysis20doeshtml)
+    - [Article 19 - https://www.dynamicyield.com/lesson/introduction-to-ab-testing/ (dynamic yield)](#article-19---httpswwwdynamicyieldcomlessonintroduction-to-ab-testing-dynamic-yield)
+    - [Article 20 - https://elem.com/~btilly/ab-testing-multiple-looks/part1-rigorous.html (Ben Tilly)](#article-20---httpselemcombtillyab-testing-multiple-lookspart1-rigoroushtml-ben-tilly)
   - [Things to include in my write up](#things-to-include-in-my-write-up)
 ---
 
@@ -32,14 +34,9 @@
 **TLDR**
  - Explains Frequentist and Bayesian (especially loss function)
  - Simulations explore relationship between true positives, threshold and sample size (i.e. test duration) in bayesian setting
+ - Concludes Bayesian allows for faster testing by looking at magnitude of change as well as probability
 
 **Summary**
-> Aims to give pragmatic advice on how to implement Bayesian approaches and how large of an impact they can have on test duration.
-
- - Aims to answer the following
-   - How much can the Bayesian approach reduce experiment duration?
-   - What’s the tradeoff between experimentation speed and accuracy?
-   - How can we select a prior distribution? How important is the prior distribution that we select?
  - Gives an overview of frequentist test
    - Set hypothesis
    - Determine sample size using power analysis
@@ -405,6 +402,20 @@ Can't be bothered to summarise a wiki page...
 **Summary**
 **Citations**
 
+### Article 19 - https://www.dynamicyield.com/lesson/introduction-to-ab-testing/ (dynamic yield)
+
+**TLDR**
+**Summary**
+**Citations**
+
+
+### Article 20 - https://elem.com/~btilly/ab-testing-multiple-looks/part1-rigorous.html (Ben Tilly)
+
+**TLDR**
+**Summary**
+**Citations**
+
+
 
 ---
 
@@ -415,7 +426,7 @@ End of article reviews
 
 Things to cover in my write up
  - How do we model theta in an AB test in frequentist Vs bayesian
- - What is the central limit theorem and how does it help up
+ - What is the central limit theorem and how does it help us
  - Frequentist test overview
    - Defining a hypothesis (one Vs two tail)
    - What is the p value
@@ -424,6 +435,7 @@ Things to cover in my write up
    - Definition of prior and posterior
    - what is the loss function (plot the value)
    - [extension] closed form of the loss function using Evan millers closed form of the chance one beta is bigger than another. Derive both Evan and Chris' equations in full.
+ - Issues with peaking and alpha inflation
  - frequentist power analysis derivation and visuals -> check this https://rugg2.github.io/AB%20testing%20-%20a%20simple%20explanation%20of%20what%20power%20analysis%20does.html
  - Simulations of expected increase, sample size and power for both frequentist and bayesian. What are the formulas for frequentist - can I define for bayesian
  - Simulations regarding using a prior (too big and too small, uncertain Vs very certain, wrong prior vs right prior)
@@ -437,4 +449,7 @@ Frequentist Vs Bayesian philosophical. In a frequentist setting the population c
  - Article 5 section 4.2 should read c_A = 0 not n_A
  - Article 5 section 4.3 figure has axis with theta - should be lambda
  - Article 5 section 8.3 - the sign is wrong should be smaller than epsilon
+
+**Calculators**
+ - https://clincalc.com/stats/samplesize.aspx
  - 
