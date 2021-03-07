@@ -256,7 +256,7 @@ $$
  - Also derives $P(\lambda_A>\lambda_B)$ for count data where $\lambda$ is the poisson parameter
 
 **Citations**
- - https://www.evanmiller.org/how-not-to-run-an-ab-test.html (Article 5 - Evan Miller)
+ - https://www.evanmiller.org/how-not-to-run-an-ab-test.html (Article 7 - Evan Miller)
 
 ---
 
@@ -277,7 +277,7 @@ $$
  - suggests sequential experiment design and Bayesian experiment design
 
 **Citations**
- - https://www.evanmiller.org/bayesian-ab-testing.html (Article 4 - Evan miller)
+ - https://www.evanmiller.org/bayesian-ab-testing.html (Article 6 - Evan miller)
  - https://www.evanmiller.org/sequential-ab-testing.html
 
 ---
