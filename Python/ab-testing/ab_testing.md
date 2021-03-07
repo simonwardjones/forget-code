@@ -13,7 +13,7 @@
       - [Article 7 - https://www.evanmiller.org/how-not-to-run-an-ab-test.html (Evan Miller)](#article-7---httpswwwevanmillerorghow-not-to-run-an-ab-testhtml-evan-miller)
       - [Article 8 - https://making.lyst.com/2014/05/10/bayesian-ab-testing/ (Maciej Kula)](#article-8---httpsmakinglystcom20140510bayesian-ab-testing-maciej-kula)
       - [Article 9 - https://www.dynamicyield.com/blog/bayesian-testing/ (Idan Michaeli)](#article-9---httpswwwdynamicyieldcomblogbayesian-testing-idan-michaeli)
-      - [Article 10 - https://en.wikipedia.org/wiki/Sample_size_determination (and checkout Power calculation!)](#article-10---httpsenwikipediaorgwikisample_size_determination-and-checkout-power-calculation)
+      - [Article 10 - https://www.nber.org/system/files/working_papers/w15701/w15701.pdf (John List et al)](#article-10---httpswwwnberorgsystemfilesworking_papersw15701w15701pdf-john-list-et-al)
       - [Article 11 - https://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/ (Jake VDP)](#article-11---httpsjakevdpgithubioblog20140311frequentism-and-bayesianism-a-practical-intro-jake-vdp)
       - [Article 12 - http://www.qubit.com/wp-content/uploads/2017/12/qubit-research-ab-test-results-are-illusory.pdf](#article-12---httpwwwqubitcomwp-contentuploads201712qubit-research-ab-test-results-are-illusorypdf)
       - [Article 13 - https://mobiledevmemo.com/its-time-to-abandon-a-b-testing/](#article-13---httpsmobiledevmemocomits-time-to-abandon-a-b-testing)
@@ -165,7 +165,7 @@
    - you can stop the test early if there is a clear winner or run it for longer if you need more samples
    - your outputs are easily interpreted quantities
 
- - Fromula for expected loss (using Evan millers formula for the probability X > Y for two betas)
+ - Formula for expected loss (using Evan millers formula for the probability X > Y for two betas)
 
 If we assume $\theta_{v_1} \sim Beta(a,b)$ and $\theta_{v_2} \sim Beta(c,d)$ then we can say
 
@@ -218,7 +218,7 @@ $$
  - Overview of how to run a test.
 
 **Summary**
- - 1 - Outlines freqentist test hypothesis and p values
+ - 1 - Outlines Frequentist test hypothesis and p values
  - 3.1 - Outlines what a credible interval of a distribution is
  - 4.1 - Defines conditional probability
  - Outlines Bayes' update rule for data
@@ -253,6 +253,7 @@ $$
  - Derives formulas for $P(A>B)$ where $A,B$ are both beta distributions
  - Similarly for $P(A>\max(B,C))$ where $A,B,C$ are  beta distributions
  - Similarly for $P(A>\max(B,C,D))$ where $A,B,C,D$ are  beta distributions
+ - Also derives $P(\lambda_A>\lambda_B)$ for count data where $\lambda$ is the poisson parameter
 
 **Citations**
  - https://www.evanmiller.org/how-not-to-run-an-ab-test.html (Article 5 - Evan Miller)
@@ -328,9 +329,8 @@ $$
  
  ---
 
-#### Article 10 - https://en.wikipedia.org/wiki/Sample_size_determination (and checkout Power calculation!)
+#### Article 10 - https://www.nber.org/system/files/working_papers/w15701/w15701.pdf (John List et al)
 
-Can't be bothered to summarise a wiki page...
 
 ---
 
