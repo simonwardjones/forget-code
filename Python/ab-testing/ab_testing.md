@@ -285,17 +285,17 @@ $$
 #### Article 8 - https://making.lyst.com/2014/05/10/bayesian-ab-testing/ (Maciej Kula)
 
 **TLDR**
- - overview of AB testing promoting Bayesian as more intuitive
+ - Overview of AB testing promoting Bayesian as more intuitive
 
 **Summary**
  - Overview of AB testing
- - Overview of bayesian prior and updating prior based on data
- - Overview of freqentist significance testing
- - Highlight bayesian as better for two reasons
+ - Overview of Bayesian prior and updating prior based on data
+ - Overview of Frequentist significance testing
+ - Highlight Bayesian as better for two reasons
    - repeated testing (alpha inflation)
    - low base rate problem
  - Simulating difference of sample means Vs posterior means
- - Comments that the benefits of bayesian require a good prior
+ - Comments that the benefits of Bayesian require a good prior
 
 
 **Citations**
@@ -307,9 +307,9 @@ $$
 #### Article 9 - https://www.dynamicyield.com/blog/bayesian-testing/ (Idan Michaeli)
 
 **TLDR**
- - highlighting key differences between bayesian and frequentist.
- - practical implications without delving into the hard-core math.
- - promotes bayesian as more intuitive
+ - Highlighting key differences between Bayesian and Frequentist
+ - Practical implications without delving into the hard-core math
+ - Promotes Bayesian as more intuitive
 
 
 **Summary**
@@ -319,7 +319,7 @@ $$
    - no peaking
    - statistical significance
  - P value misinterpretation - it is not a probability of B being better than A
- - overview of how Bayesian methodology thinks of conversion as a distribution
+ - Overview of how Bayesian methodology thinks of conversion as a distribution
 
 **Citations**
  - https://www.evanmiller.org/how-not-to-run-an-ab-test.html (Article 7 - Evan miller)
