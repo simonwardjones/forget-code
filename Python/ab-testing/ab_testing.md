@@ -12,7 +12,14 @@
       - [Article 6 - https://www.evanmiller.org/bayesian-ab-testing.html (Evan Miller)](#article-6---httpswwwevanmillerorgbayesian-ab-testinghtml-evan-miller)
       - [Article 7 - https://www.evanmiller.org/how-not-to-run-an-ab-test.html (Evan Miller)](#article-7---httpswwwevanmillerorghow-not-to-run-an-ab-testhtml-evan-miller)
       - [Article 8 - https://making.lyst.com/2014/05/10/bayesian-ab-testing/ (Maciej Kula)](#article-8---httpsmakinglystcom20140510bayesian-ab-testing-maciej-kula)
-      - [Article 9 - https://www.dynamicyield.com/blog/bayesian-testing/ (Idan Michaeli)](#article-9---httpswwwdynamicyieldcomblogbayesian-testing-idan-michaeli)
+      - [Article 9 - https://www.dynamicyield.com/course/testing-and-optimization/ (Dynamic Yield)](#article-9---httpswwwdynamicyieldcomcoursetesting-and-optimization-dynamic-yield)
+        - [1 - A primer on A/B testing and experimentation](#1---a-primer-on-ab-testing-and-experimentation)
+        - [2 - A/A testing and decision making in experimentation](#2---aa-testing-and-decision-making-in-experimentation)
+        - [3 - Why reaching and protecting statistical significance is so important in A/B tests](#3---why-reaching-and-protecting-statistical-significance-is-so-important-in-ab-tests)
+        - [4 - Choosing the right traffic allocation in A/B testing](#4---choosing-the-right-traffic-allocation-in-ab-testing)
+        - [5 - Understanding conversion attribution scoping in A/B testing](#5---understanding-conversion-attribution-scoping-in-ab-testing)
+        - [6 - Choosing the Right Conversion Optimization Objective](#6---choosing-the-right-conversion-optimization-objective)
+        - [7 - https://www.dynamicyield.com/lesson/bayesian-testing/](#7---httpswwwdynamicyieldcomlessonbayesian-testing)
       - [Article 10 - https://www.nber.org/system/files/working_papers/w15701/w15701.pdf (John List et al)](#article-10---httpswwwnberorgsystemfilesworking_papersw15701w15701pdf-john-list-et-al)
       - [Article 11 - https://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/ (Jake VDP)](#article-11---httpsjakevdpgithubioblog20140311frequentism-and-bayesianism-a-practical-intro-jake-vdp)
       - [Article 12 - http://www.qubit.com/wp-content/uploads/2017/12/qubit-research-ab-test-results-are-illusory.pdf](#article-12---httpwwwqubitcomwp-contentuploads201712qubit-research-ab-test-results-are-illusorypdf)
@@ -304,13 +311,72 @@ $$
 
 ---
 
-#### Article 9 - https://www.dynamicyield.com/blog/bayesian-testing/ (Idan Michaeli)
+#### Article 9 - https://www.dynamicyield.com/course/testing-and-optimization/ (Dynamic Yield)
 
 **TLDR**
+ - The Dynamic Yield has a series on testing and optimisation
+
+##### 1 - A primer on A/B testing and experimentation
+https://www.dynamicyield.com/lesson/introduction-to-ab-testing/
+
+**TLDR**
+ - What is an A/B test?
+ - Constructing a hypothesis
+ - Multivariate testing and AA testing
+
+
+##### 2 - A/A testing and decision making in experimentation
+https://www.dynamicyield.com/lesson/aa-testing-in-experimentation/
+
+**TLDR**
+ - Bayesian Probability to be best
+ - AB tests require representative samples
+ - AA tests check your system works
+   - Picks up bugs
+   - Checks random traffic split ~50%
+ - When running an AA test set the MDE (minimal detectable effect) based on what is important to detect
+
+
+##### 3 - Why reaching and protecting statistical significance is so important in A/B tests
+https://www.dynamicyield.com/lesson/statistical-significance/
+
+**TLDR** 
+ - Reaching proper statistical significance is critical for reliable results 
+ - Explanation of hypothesis testing
+ - Type I error (false positive) - We declare the variant a winner (but it wasn't really!)
+ - Type II error (false negative) - We don't declare the variant a winner (but it was really)
+ - Set proper sample size!
+ - Statistical significance controls for type I error.
+ - Statistical power/mde controls for type II error
+ - Early stopping issues
+
+
+##### 4 - Choosing the right traffic allocation in A/B testing
+https://www.dynamicyield.com/lesson/traffic-allocation/
+
+**TLDR** 
+ - manual allocation (e.g. equal split)
+ - Multi armed bandit/dynamic allocation
+   - the highest-performing variation is gradually served to a larger percentage of visitors as more data is collected
+   - Use this when their is limited time to collect the data e.g. hero promotion banner test
+
+
+##### 5 - Understanding conversion attribution scoping in A/B testing
+https://www.dynamicyield.com/lesson/traffic-allocation/
+
+**TLDR** 
+ - Attribution Scoping can be at the Session-Level or at the User-Level 
+
+##### 6 - Choosing the Right Conversion Optimization Objective
+https://www.dynamicyield.com/lesson/optimization-objective/
+
+**TLDR** 
+ - 
+
+##### 7 - https://www.dynamicyield.com/lesson/bayesian-testing/
  - Highlighting key differences between Bayesian and Frequentist
  - Practical implications without delving into the hard-core math
  - Promotes Bayesian as more intuitive
-
 
 **Summary**
  - What is hypothesis testing?
@@ -330,6 +396,17 @@ $$
  ---
 
 #### Article 10 - https://www.nber.org/system/files/working_papers/w15701/w15701.pdf (John List et al)
+
+**TLDR**
+**Summary**
+ - "This study provides several simple rules of thumb that researchers can apply to improve the efficiency of their experimental designs"
+ - Randomisation techniques
+   - block and within subject
+   - Factorial
+<!-- Page 6 -->
+
+
+**Citations**
 
 
 ---
