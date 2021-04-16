@@ -19,7 +19,8 @@
         - [4 - Choosing the right traffic allocation in A/B testing](#4---choosing-the-right-traffic-allocation-in-ab-testing)
         - [5 - Understanding conversion attribution scoping in A/B testing](#5---understanding-conversion-attribution-scoping-in-ab-testing)
         - [6 - Choosing the Right Conversion Optimization Objective](#6---choosing-the-right-conversion-optimization-objective)
-        - [7 - https://www.dynamicyield.com/lesson/bayesian-testing/](#7---httpswwwdynamicyieldcomlessonbayesian-testing)
+        - [7 - Frequentist vs. Bayesian approach in A/B testing](#7---frequentist-vs-bayesian-approach-in-ab-testing)
+        - [8 - Guidelines for running effective Bayesian A/B tests](#8---guidelines-for-running-effective-bayesian-ab-tests)
       - [Article 10 - https://www.nber.org/system/files/working_papers/w15701/w15701.pdf (John List et al)](#article-10---httpswwwnberorgsystemfilesworking_papersw15701w15701pdf-john-list-et-al)
       - [Article 11 - https://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/ (Jake VDP)](#article-11---httpsjakevdpgithubioblog20140311frequentism-and-bayesianism-a-practical-intro-jake-vdp)
       - [Article 12 - http://www.qubit.com/wp-content/uploads/2017/12/qubit-research-ab-test-results-are-illusory.pdf](#article-12---httpwwwqubitcomwp-contentuploads201712qubit-research-ab-test-results-are-illusorypdf)
@@ -364,16 +365,22 @@ https://www.dynamicyield.com/lesson/traffic-allocation/
 ##### 5 - Understanding conversion attribution scoping in A/B testing
 https://www.dynamicyield.com/lesson/traffic-allocation/
 
-**TLDR** 
+**TLDR**
  - Attribution Scoping can be at the Session-Level or at the User-Level 
 
 ##### 6 - Choosing the Right Conversion Optimization Objective
 https://www.dynamicyield.com/lesson/optimization-objective/
 
 **TLDR** 
- - 
+ - Generally speaking, conversions are measured when a visitor executes actions that are defined as valuable to your business.
+ - Revenue tests take longer than click/goal based tests
+ - Don't peak
+ - Every test requires considerable resources (budget, time, and people), so stick to the elements you know make a difference, such as messaging, hero banners, and the call-to-action (CTA).
 
-##### 7 - https://www.dynamicyield.com/lesson/bayesian-testing/
+##### 7 - Frequentist vs. Bayesian approach in A/B testing
+https://www.dynamicyield.com/lesson/bayesian-testing/
+
+**TLDR** 
  - Highlighting key differences between Bayesian and Frequentist
  - Practical implications without delving into the hard-core math
  - Promotes Bayesian as more intuitive
@@ -392,8 +399,13 @@ https://www.dynamicyield.com/lesson/optimization-objective/
  - http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/ (Article 11 - Jake VDP)
  - http://varianceexplained.org/r/bayesian-ab-testing/ (Article 3 - David Robinson)
 
- 
- ---
+##### 8 - Guidelines for running effective Bayesian A/B tests
+https://www.dynamicyield.com/lesson/running-effective-bayesian-ab-tests/
+
+**TLDR** 
+ - Overview of Bayesian statistics
+
+---
 
 #### Article 10 - https://www.nber.org/system/files/working_papers/w15701/w15701.pdf (John List et al)
 
