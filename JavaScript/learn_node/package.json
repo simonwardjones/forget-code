@@ -7,7 +7,7 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "mocha": "^8.3.1"
+    "mocha": "^8.4.0"
   },
   "scripts": {
     "test": "mocha test"
