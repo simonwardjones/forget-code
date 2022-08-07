@@ -4,11 +4,11 @@
   "description": "Learning node",
   "main": "app.js",
   "dependencies": {
-    "lodash": "^4.17.21",
-    "ansi-regex": ">=5.0.1"
+    "ansi-regex": ">=5.0.1",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "mocha": "^8.4.0"
+    "mocha": "^10.0.0"
   },
   "scripts": {
     "test": "mocha test"
