@@ -1,5 +1,7 @@
 # Environments in python
 
+For a great covering of virtual environments checkout the official [documentation](https://docs.python.org/3/tutorial/venv.html)
+
 ## Using pip, venv and requirements.txt
 
 Once we have installed a version of python on our machine we have a `python` executable, together with `pip` executable and along side this a `site_packages` folder - which is a special folder where the packages are saved when we install them.
