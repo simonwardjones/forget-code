@@ -1,12 +1,36 @@
 # Environments in python
 
-For a great covering of virtual environments checkout the official [documentation](https://docs.python.org/3/tutorial/venv.html)
+## Whats the PATH?
+
+For a better understanding of virtual environments it helps to know that when you run a command like `python` or `pip`, your operating system searches through a list of directories to find an executable with that name. This list of directories lives in the PATH environment variable separated with colons. Here is an example of what it might look like:
+
+```zsh
+echo ${PATH}
+```
+> /Users/simonward-jones/.nvm/versions/node/v18.6.0/bin:/Users/simonward-jones/.rbenv/shims:/Users/simonward-jones/.poetry/bin:/Users/simonward-jones/.pyenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+In this instance if I were to run
+```zsh
+python example.py
+```
+
+The operating system would search in each folder of the PATH until it found a python to execute. We can actually easily check the python found by running 
+
+```zsh
+which python
+```
+> /Users/simonward-jones/.pyenv/shims/python
+
+In my case it found the `python` in the `pyenv` folder shims folder as I expected! `pyenv` is a great tool that allows you to easily install and switch between multiple versions of Python. More information here: https://github.com/pyenv/pyenv.
+
 
 ## Using pip, venv and requirements.txt
 
-Once we have installed a version of python on our machine we have a `python` executable, together with `pip` executable and along side this a `site_packages` folder - which is a special folder where the packages are saved when we install them.
+Once we have installed a version of python on our machine we have a `python` executable, together with a `pip` executable and along side this a `site_packages` folder - which is a special folder where python packages are saved when we install them.
 
 Different projects may require different versions of the same package and so we need to provide separate isolated environment for each project. In order to achieve this with python we use a virtual environment for each project. The virtual environment creates a copy of python, pip and has its own `site_packages` folder where it will store the packages we require for the project.
+
+For a quick tutorial covering virtual environments checkout the official [documentation](https://docs.python.org/3/tutorial/venv.html)
 
 There are various tools that can help you to manage the creation of the environment and also a configuration file which will live in your project to list the dependencies that need to be installed into the virtual environment.
 
