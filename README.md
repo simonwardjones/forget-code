@@ -2,4 +2,4 @@
 
 ## About 
 
-General learning repo for code
+General learning repo for code.
