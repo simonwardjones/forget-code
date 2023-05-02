@@ -14,3 +14,4 @@ R.Rproj
 **.egg-info/
 .vscode
 mnist/
+target/
