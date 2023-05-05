@@ -1,0 +1,11 @@
+# vscode needs the cargo in the root
+
+[workspace]
+
+members = [
+  "rust/control-flow",
+  "rust/enums",
+  "rust/human-struct",
+  "rust/ownership",
+  "rust/leet",
+]
