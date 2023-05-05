@@ -7,6 +7,7 @@ fn main() {
     match_example();
 }
 
+#[allow(dead_code)]
 fn example_1() {
     let condition = false;
     let number = if condition { 5 } else { 6 };
@@ -42,6 +43,7 @@ fn example_1() {
     println!("Now the result is {result} as we return the counter from the loop block");
 }
 
+#[allow(dead_code)]
 fn nestedloops() {
     let mut simon = 0;
     'outer: loop {
@@ -61,6 +63,7 @@ fn nestedloops() {
     }
 }
 
+#[allow(dead_code)]
 fn manual_while_loop() {
     // while x < 10 print x
     let mut x = 0;
@@ -74,6 +77,7 @@ fn manual_while_loop() {
     }
 }
 
+#[allow(dead_code)]
 fn real_while() {
     let mut x = 0;
     let mut counter = 1;
@@ -86,6 +90,7 @@ fn real_while() {
     println!("{x} ")
 }
 
+#[allow(dead_code)]
 fn for_examples() {
     let a = [10, 20, 30, 40, 50];
     let mut index = 0;
