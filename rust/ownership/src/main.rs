@@ -1,5 +1,4 @@
 // Various examples from the ownership chapter.
-
 use std::io;
 
 fn main() {
@@ -10,20 +9,21 @@ fn main() {
         .expect("Failed to read line");
 
     let result: String = exercise_from_book_simon(&guess);
-    let first = first_word(&guess);
+    let _first = first_word(&guess);
     println!("result = {}!", result);
 
     check_string_literal();
 }
 
+#[allow(dead_code)]
 fn example_1() {
-    let mut issie = String::from("Issie");
+    let mut issie: String = String::from("Issie");
 
     println!("Hello from {issie}");
     exclaim(&issie);
     // I expect this to fail borrow checker.
     println!("Hello from {issie} after using ref to issie in sub function.");
-    let exclaimed_issie = add_exclaim(&mut issie);
+    let exclaimed_issie: String = add_exclaim(&mut issie);
     println!("Hello from {issie} after using ref to issie in second sub function.");
     println!("exclaimed_issie = {exclaimed_issie}");
 }
@@ -37,13 +37,14 @@ fn add_exclaim(to_exclaim: &mut String) -> String {
     return to_exclaim.to_string();
 }
 
+#[allow(dead_code)]
 fn example_2() {
     // In this example the order of the last
     // two lines is important to whether it will compile
     // This is because a reference exists until it is last used!
     // and we can only have 1 mutable reference!
-    let mut simon = String::from("Simon");
-    let simon_copy = &mut simon;
+    let mut simon: String = String::from("Simon");
+    let simon_copy: &mut String = &mut simon;
     simon_copy.push_str("!!!");
     println!("simon_copy = {simon_copy}");
     println!("simon = { }", simon);
@@ -64,7 +65,7 @@ fn exercise_from_book_simon(example: &String) -> String {
 }
 
 fn first_word(s: &String) -> usize {
-    let bytes = s.as_bytes();
+    let bytes: &[u8] = s.as_bytes();
 
     for (i, &item) in bytes.iter().enumerate() {
         if item == b' ' {
