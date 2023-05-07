@@ -5,17 +5,22 @@
 // Output: [1,2]
 
 fn main() {
+    solution_1()
+}
+
+#[allow(dead_code)]
+fn solution_1() {
     println!("Hello, world!");
     let example_1: Vec<i32> = vec![2, 7, 11, 15];
     let target_1: i32 = 9;
     let example_2: Vec<i32> = vec![3, 2, 4];
     let target_2: i32 = 6;
-    let result_1 = Solution::two_sum(example_1, target_1);
-    let result_2 = Solution::two_sum(example_2, target_2);
+    let result_1 = Solution1::two_sum(example_1, target_1);
+    let result_2 = Solution1::two_sum(example_2, target_2);
     println!("result_1 = {:?}", result_1);
     println!("result_2 = {:?}", result_2);
 
-    // Just playing with iter iter_mut and into_iter 
+    // Just playing with iter iter_mut and into_iter
     let mut simon: Vec<String> = vec![1.to_string(), 2.to_string(), 3.to_string()];
     println!("{simon:?}");
     for value in simon.iter_mut() {
@@ -25,9 +30,9 @@ fn main() {
     println!("{simon:?}");
 }
 
-struct Solution;
+struct Solution1;
 
-impl Solution {
+impl Solution1 {
     pub fn two_sum(numbers: Vec<i32>, target: i32) -> Vec<i32> {
         for (i, x) in numbers.iter().enumerate() {
             for (j, y) in numbers[(i + 1)..].iter().enumerate() {
