@@ -5,13 +5,12 @@
 // $ ./main
 
 fn main() {
-    let example_string = "Issie";
-    let fib_value = fib(10);
+    let example_string: &str = "Issie";
+    let fib_value: i32 = fib(10);
     println!("Hello, {example_string} {fib_value}");
 }
 
 fn fib(n: i32) -> i32 {
-    // need control flow!
     if n == 0 || n == 1 {
         1
     } else {
