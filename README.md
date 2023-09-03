@@ -1,5 +1,5 @@
 # Forget Code
 
-## About 
+## About
 
 General learning repo for code.
