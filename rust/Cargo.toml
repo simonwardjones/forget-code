@@ -5,9 +5,9 @@
 resolver = "2"
 
 members = [
-  "exploration/control-flow",
-  "exploration/enums",
-  "exploration/human-struct",
-  "exploration/ownership",
-  "exploration/leet",
+    "exploration/basics",
+    "exploration/enums",
+    "exploration/human-struct",
+    "exploration/ownership",
+    "exploration/leet",
 ]

@@ -23,6 +23,14 @@ To uninstall Rust and rustup:
  rustup self uninstall
 ```
 
+### Development
+
+See vscode docs here: https://code.visualstudio.com/docs/languages/rust
+
+Summary:
+    - rust-analyser extension for intellisense/highlighting
+    - code-lldb for debugger
+
 ### Compiling and running
 
 Here is a basic hello world rust file. Note it is called `main.rs` and has a `main()` function which is the default entry point to all rust programmes. `println!` is not a function, it is a macro - marked with the `!`. This gets expanded to more code at compile time (in this instance opening and writing to std out).
@@ -54,16 +62,103 @@ To build the src code to `target/debug` folder use `cargo build`. To build with 
 Use `cargo run` to build and execute the code!
 
 
-### Variables
+### Variables, constants
 
-Create variables with `let`. Note they are immutable by default!
+Create variables with `let`. Note they are immutable by default! They can't be made in the global scope.
 
 ```rust
 let apples = 5; // immutable
 let mut bananas = 5; // mutable
 ```
 
-### Using creates
+Constants are **not** allowed to be mutable and are defined with `const` and **must** include a type annotation. Constants may be set only to a constant expression, not the result of a value that could only be computed at runtime.
+
+Variables may be shadowed (re-defined using a different value) but constants may not (within the same scope).
+
+```rs
+const PI: f64 = 3.1415926535898;
+```
+
+### Types
+
+```rs
+// scalar types: integers, floating-point numbers, Booleans and characters
+let integer: i32 = 32;
+let float: f64 = 3.1415;
+let boolean: bool = true;
+let character: char = 'a';
+// compound types: tuple and array
+let tuple: (i32, f64, bool, char) = (integer, float, boolean, character);
+let array: [i32; 5] = [1, 2, 3, 4, 5]; //  arrays have a fixed length
+// arrays only contain one type
+
+let b = tuple.1; // access by dot index
+let (a, _b, c, d) = tuple; // demonstrate destructuring
+let three: i32 = array[2]; // access by index and []
+```
+
+### Functions
+
+Are defined as follows:
+```rs
+fn add(x: i32, y: i32) -> i32 {
+    x + y // implicitly return the last expression
+}
+let (x, y) = (1, 2);
+let z = add(x, y);
+```
+
+### Control flow
+
+Here we show an if block and because if is an expression, we can use it on the right side of a let statement.
+
+```rs
+if number > 5 {
+    println!("Greater than 5");
+} else if number > 2 {
+    println!("Greater than 2, less than or equal to 5");
+} else {
+    println!("Less than or equal to 2");
+}
+let condition: bool = false;
+let number = if condition { 5 } else { 6 };
+```
+
+### Looping
+
+We can loop with the `loop` code block, the `while` block or the `floor` block.
+
+```rs
+let result = loop {
+    counter += 1;
+    println!("Again!");
+    if counter == repeats {
+        println!("I'm out'a here");
+        break counter;
+    }
+};
+```
+
+Or the while block
+```rs
+while counter < N {
+    x += counter;
+    counter += 1;
+}
+```
+
+Or everyone's favourite for block:
+```rs
+let a = [10, 20, 30, 40, 50];
+for element in a {
+    println!("The value is: {element}");
+}
+for number in (1..4).rev() {
+    println!("{number}!");
+}
+```
+
+### Using Crates
 
 Add the crate to the dependencies:
 ```toml
