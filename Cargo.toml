@@ -1,4 +1,5 @@
 # vscode needs the cargo in the root
+# You can run a sub project with $cargo run -p leet
 
 [workspace]
 
