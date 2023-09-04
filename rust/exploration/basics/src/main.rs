@@ -1,7 +1,3 @@
-use rand::Rng;
-use std::char;
-use std::cmp::Ordering;
-
 fn main() {
     println!("Running basics.\n");
     type_example();
@@ -15,8 +11,6 @@ fn main() {
     manual_while_loop_example();
     while_example();
     for_example();
-    // match_example();
-    // random_number_example();
 }
 
 #[allow(dead_code)]
@@ -192,23 +186,5 @@ fn for_example() {
         println!("{number}!");
     }
     println!("LIFTOFF!!!");
-    println!("");
-}
-
-#[allow(dead_code)]
-fn match_example() {
-    let x = 10;
-    match x.cmp(&11) {
-        Ordering::Less => println!("LESS"),
-        Ordering::Greater => println!("Too big!"),
-        Ordering::Equal => println!("You win!"),
-    }
-    println!("");
-}
-
-#[allow(dead_code)]
-fn random_number_example() {
-    let secret_number = rand::thread_rng().gen_range(1..101);
-    println!("The secret number is: {}", secret_number);
     println!("");
 }

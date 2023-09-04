@@ -2,80 +2,95 @@
 use std::io;
 
 fn main() {
+    ownership_example();
+    reference_example();
+    reference_scope_example();
+    slice_example();
+    // read_first_word(); // Requires user input
+}
+
+#[allow(dead_code)]
+fn ownership_example() {
+    println!("String example");
+    // we use a String as these are stored on the heap (and a reference to it on the stack)
+    let mut example: String = String::from("Hello");
+    example.push_str(" world!"); // push_str() appends a literal to a String
+    println!("example = {example}");
+    let moved_example: String = example; // value moved to moved_example
+                                         // println!("example = {example}"); // this would raise a compile error
+    let cloned_example: String = moved_example.clone(); // value cloned to cloned_example
+    println!("moved_example = {moved_example} and cloned_example = {cloned_example}");
+    let x = 1;
+    let y = x;
+    println!("x ({x}) and y ({y}) are both valid as stack values are copied.");
+    println!();
+}
+
+#[allow(dead_code)]
+fn reference_example() {
+    fn exclaim(to_exclaim: &String) {
+        println!("{to_exclaim}!!!!");
+    }
+    fn add_exclaim(to_exclaim: &mut String) -> String {
+        to_exclaim.push_str("!!");
+        return to_exclaim.to_string();
+    }
+
+    println!("Reference example");
+    let mut issie: String = String::from("Issie");
+    exclaim(&issie); // we can create an immutable reference.
+    let exclaimed_issie: String = add_exclaim(&mut issie); // we can create one mutable reference.
+    println!("exclaimed_issie = {exclaimed_issie}");
+    println!();
+}
+
+#[allow(dead_code)]
+fn reference_scope_example() {
+    // In this example the order of the last
+    // two lines is important to whether it will compile
+    // This is because a reference exists until it is last used!
+    // and we can only have 1 mutable reference!
+    println!("Reference scope example");
+    let mut simon: String = String::from("Simon");
+    let simon_copy: &mut String = &mut simon;
+    println!("simon_mut_copy = {simon_copy}");
+    println!("simon = { }", simon);
+    println!();
+}
+
+#[allow(dead_code)]
+fn slice_example() {
+    println!("Slice example");
+    let simon: String = String::from("Simon Darcy-Jones");
+    let simon_first_name: &str = &simon[0..5];
+    let simon_last_name: &str = &simon[6..];
+    println!("simon_first_name = {simon_first_name}");
+    println!("simon_last_name = {simon_last_name}");
+    println!();
+}
+
+#[allow(dead_code)]
+fn read_first_word() {
+    // Demo from rust book
+
+    fn first_word(example: &str) -> &str {
+        println!("{}", example);
+        match example.find(" ") {
+            // find returns an Option<usize>
+            Some(index) => &example[..index],
+            None => example,
+        }
+    }
+
+    println!("Guessing game example");
     let mut guess = String::from("");
 
     io::stdin()
         .read_line(&mut guess)
         .expect("Failed to read line");
 
-    let result: String = exercise_from_book_simon(&guess);
-    let _first = first_word(&guess);
-    println!("result = {}!", result);
+    let result: &str = first_word(&guess);
+    println!("First word = {result}!");
 
-    check_string_literal();
-}
-
-#[allow(dead_code)]
-fn example_1() {
-    let mut issie: String = String::from("Issie");
-
-    println!("Hello from {issie}");
-    exclaim(&issie);
-    // I expect this to fail borrow checker.
-    println!("Hello from {issie} after using ref to issie in sub function.");
-    let exclaimed_issie: String = add_exclaim(&mut issie);
-    println!("Hello from {issie} after using ref to issie in second sub function.");
-    println!("exclaimed_issie = {exclaimed_issie}");
-}
-
-fn exclaim(to_exclaim: &String) {
-    println!("{to_exclaim}!!!!");
-}
-
-fn add_exclaim(to_exclaim: &mut String) -> String {
-    to_exclaim.push_str("!!");
-    return to_exclaim.to_string();
-}
-
-#[allow(dead_code)]
-fn example_2() {
-    // In this example the order of the last
-    // two lines is important to whether it will compile
-    // This is because a reference exists until it is last used!
-    // and we can only have 1 mutable reference!
-    let mut simon: String = String::from("Simon");
-    let simon_copy: &mut String = &mut simon;
-    simon_copy.push_str("!!!");
-    println!("simon_copy = {simon_copy}");
-    println!("simon = { }", simon);
-}
-
-fn exercise_from_book_simon(example: &String) -> String {
-    // Here’s a small programming problem: write a function that takes a string
-    // of words separated by spaces and returns the first word it finds in that
-    // string. If the function doesn’t find a space in the string, the whole string
-    // must be one word, so the entire string should be returned.
-    // let example = String::from("here is an example.");
-
-    println!("{}", example);
-    match example.find(" ") {
-        Some(t) => example[..t].to_string(),
-        None => example.to_string(),
-    }
-}
-
-fn first_word(s: &String) -> usize {
-    let bytes: &[u8] = s.as_bytes();
-
-    for (i, &item) in bytes.iter().enumerate() {
-        if item == b' ' {
-            return i;
-        }
-    }
-
-    s.len()
-}
-
-fn check_string_literal() -> String {
-    "hello!".to_string()
+    println!();
 }

@@ -158,6 +158,79 @@ for number in (1..4).rev() {
 }
 ```
 
+### Ownership
+
+Memory is managed through a system of ownership with a set of rules that the compiler checks.
+
+**Stack/Heap**
+- The stack stores values as last in, first out. Data stored on the stack must have a known fixed size
+- On the heap you request a certain amount of space. The memory allocator finds an empty spot in the heap that is big enough, marks it as being in use, and returns a pointer, which is the address of that location. This process is called allocating on the heap. Because the pointer to the heap is a known, fixed size, you can store the pointer on the stack.
+
+Pushing to the stack is faster than allocating on the heap because the allocator never has to search for a place to store new data. Accessing data in the heap is slower than accessing data on the stack because you have to follow a pointer to get there.
+
+**Ownership Rules**
+1. Each value in Rust has an owner.
+2. There can only be one owner at a time.
+3. When the owner goes out of scope, the value will be dropped.
+
+```rs
+{                      // s is not valid here, it’s not yet declared
+    let s = "hello";   // s is valid from this point forward
+    // do stuff with s
+}                      // this scope is now over, and s is no longer valid
+```
+
+The `String` type is stored on the heap to support a mutable, growable piece of text. This is different from string-literals which are of known size as they are hard-coded directly into the final executable.
+
+Memory is automatically returned once the variable that owns it goes out of scope. Rust calls a special function called `drop` for us.
+
+**Move**
+When re-assigning a value on the **heap** rust considers the previous pointer as no longer valid.
+```rs
+let s1 = String::from("hello");
+let s2 = s1;
+// s1 has been moved to s2 and s1 is no longer value
+```
+If we want a full clone of the heap data we can use clone `let s2 = s1.clone();`
+
+If a type implements the Copy trait, variables that use it do not move, but rather are trivially copied. Examples include integers, floating-points, boolean, char and Tuples, if they only contain types that also implement Copy.
+
+**Functions**
+Passing a variable to a function will move or copy, just as assignment does.
+
+
+### References and borrowing
+
+Instead of moving a variable (e.g `String`) into a function we can provide a reference. The `&var` syntax tells us that it is a reference and doesn't own the data. We call the action of creating a reference `borrowing`. Just as variables are immutable by default, so are references.
+
+```rs
+fn calculate_length(s: &String) -> usize {
+    s.len()
+}
+let simon = String::from("Simon");
+let len_simon = calculate_length(&simon);
+```
+
+**Mutable references**
+We can have mutable references but if you have a mutable reference to a value, you can have no other references to that value in scope!
+
+```rs
+let mutable_simon = String::from("Simon");
+let mutable_reference_simon = &mut mutable_simon;
+```
+
+Reference’s scope starts from where it is introduced and continues through the last time that reference is used.
+
+
+### Slices
+
+Slices let you reference a contiguous sequence of elements in a collection. It's a kind of reference, so it does not have ownership.
+```rs
+let simon: String = String::from("Simon Darcy-Jones");
+let simon_first_name: &str = &simon[0..5];
+let simon_last_name: &str = &simon[6..];
+```
+
 ### Using Crates
 
 Add the crate to the dependencies:
