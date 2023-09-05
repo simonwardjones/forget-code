@@ -1,7 +1,5 @@
 # Rust Super Summary
 
-## Chapter 1
-
 ### Installation
 Download Rust through `rustup`, a command line tool for managing Rust versions and associated tools.
 ```shell
@@ -163,12 +161,14 @@ for number in (1..4).rev() {
 Memory is managed through a system of ownership with a set of rules that the compiler checks.
 
 **Stack/Heap**
+
 - The stack stores values as last in, first out. Data stored on the stack must have a known fixed size
 - On the heap you request a certain amount of space. The memory allocator finds an empty spot in the heap that is big enough, marks it as being in use, and returns a pointer, which is the address of that location. This process is called allocating on the heap. Because the pointer to the heap is a known, fixed size, you can store the pointer on the stack.
 
 Pushing to the stack is faster than allocating on the heap because the allocator never has to search for a place to store new data. Accessing data in the heap is slower than accessing data on the stack because you have to follow a pointer to get there.
 
 **Ownership Rules**
+
 1. Each value in Rust has an owner.
 2. There can only be one owner at a time.
 3. When the owner goes out of scope, the value will be dropped.
@@ -185,6 +185,7 @@ The `String` type is stored on the heap to support a mutable, growable piece of 
 Memory is automatically returned once the variable that owns it goes out of scope. Rust calls a special function called `drop` for us.
 
 **Move**
+
 When re-assigning a value on the **heap** rust considers the previous pointer as no longer valid.
 ```rs
 let s1 = String::from("hello");
@@ -196,6 +197,7 @@ If we want a full clone of the heap data we can use clone `let s2 = s1.clone();`
 If a type implements the Copy trait, variables that use it do not move, but rather are trivially copied. Examples include integers, floating-points, boolean, char and Tuples, if they only contain types that also implement Copy.
 
 **Functions**
+
 Passing a variable to a function will move or copy, just as assignment does.
 
 
@@ -212,6 +214,7 @@ let len_simon = calculate_length(&simon);
 ```
 
 **Mutable references**
+
 We can have mutable references but if you have a mutable reference to a value, you can have no other references to that value in scope!
 
 ```rs
@@ -230,6 +233,78 @@ let simon: String = String::from("Simon Darcy-Jones");
 let simon_first_name: &str = &simon[0..5];
 let simon_last_name: &str = &simon[6..];
 ```
+
+
+### Structs
+
+In a struct you define named fields with their types. You can mark the **whole** struct as mutable to edit fields. Note structs own their data unless you use `references` - but these require `lifetimes`. We will defer to later on this.
+
+```rs
+struct Human {
+    name: String,
+    age: usize,
+    weight: i32,
+    email: String,
+}
+// Create example
+let simon = Human {
+    name: String::from("Simon Darcy-Jones"),
+    age: 31,
+    email: String::from("simonwardjones16@gmail.com"),
+};
+// access value
+println!("email {} ", simon.email);
+// shorthand field init
+let name = String::from("Simon Darcy-Jones");
+let age = 31;
+let email = String::from("simonwardjones16@gmail.com");
+let simon = Human { name, age, email };
+```
+
+Rust has a nice update syntax. Here we keep fields of simon but change age. `..simon` must come last.
+
+```rs
+let aged_simon = Human { age: 32, ..simon };
+```
+
+**tuple structs**
+
+Tuple structs are useful when you want to give the whole tuple a name and make the tuple a different type from other tuples, and when naming each field as in a regular struct would be verbose or redundant.
+```rs
+struct Color(i32, i32, i32);
+```
+
+**Unit struct**
+We can define struct types with no data fields.
+```rs
+struct Sentinel;
+```
+
+**Impl blocks add methods and associated functions to structs**
+
+Here we add a method `describe` and an associated (factory/constructor) function `baby`.
+```rs
+impl Human {
+    fn describe(&self) {
+        println!(
+            "{}, aged {} with email {}.",
+            self.name, self.age, self.email
+        );
+    }
+
+    fn baby(name: String) -> Human {
+        Human {
+            email: String::from(&name) + "@gmail.com",
+            name,
+            age: 0,
+        }
+    }
+}
+// Using them
+simon.describe();
+let mut baby = Human::baby("no-name".to_string());
+```
+
 
 ### Using Crates
 

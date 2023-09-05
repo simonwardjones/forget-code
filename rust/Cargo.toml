@@ -7,7 +7,7 @@ resolver = "2"
 members = [
     "exploration/basics",
     "exploration/enums",
-    "exploration/human-struct",
+    "exploration/structs",
     "exploration/ownership",
     "exploration/leet",
 ]
