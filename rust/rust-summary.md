@@ -305,6 +305,81 @@ simon.describe();
 let mut baby = Human::baby("no-name".to_string());
 ```
 
+### Enums
+
+Enums allow us to define a type by enumerating its possible variants. For example
+```rs
+enum Direction {
+    North,
+    East,
+    South,
+    West,
+}
+let direction = Direction::North;
+```
+
+Variants can include data similar to unit structs, tuple structs and structs e.g.
+
+```rs
+enum Shape {
+    Rectangle { height: i32, width: i32 },
+    Circle(i32),
+    UnknownPolygon,
+}
+let rectangle = Shape::Rectangle {
+    height: 10,
+    width: 10,
+};
+```
+
+**The Option enum**
+
+The option enum allows us to convey the idea where there may or may not be a value - Similar use case as `None` in python.
+
+Option and its variants are automatically in scope (i.e. included in the prelude) but is defined as
+```rs
+enum Option<T> {
+    None,
+    Some(T),
+}
+```
+Generally you have to convert an Option<T> to a `T` before you can perform `T` operations with it. Generally, this helps catch one of the most common issues with null: assuming that something isn’t null when it actually is. In the next example the `unwrap` method tries to get the `i32` from the `Option` x or raises an error - admittedly we could have handled this better - but it forces us to think about handling it!
+```rs
+let x: Option<i32> = Some(5);
+let z: i32 = 5 + x.unwrap();
+```
+
+### Pattern Matching with `match`
+
+Match allows you to compare a value against patterns and then execute code based on which pattern matches. Patterns can be made up of literal values, variable names, wildcards, and many other things. A match compares the value against each pattern in order and runs the code for the first matched pattern. In the next example we re-implement the `unwrap` method using a match statement with two arms where we use the `Some` and `None` enum variants as patterns. This example also demonstrates binding the value in `Some()` to y.
+```rs
+let unwrapped_x: i32 = match x {
+    Some(y) => y,
+    None => panic!("called `Option::unwrap()` on a `None` value"),
+};
+```
+The great thing about matches is they have to be exhaustive. I could demonstrate this with an enum but demonstrate it instead with an i32. I also show how you can use `_` as the catch all (You could have called the `_` any name but as I am not using it in the arm I call it `_`).
+
+```rs
+let x : i32 = 20;
+match x {
+    1 => println!("one"),
+    2 => println!("two"),
+    3 => println!("three"),
+    _ => println!("If you comment this line i fail."),
+}```
+
+### if let
+
+If let is a shorthand for matching one specific pattern while ignoring the rest.
+```rs
+let circle = Shape::Circle(10);
+if let Shape::Circle(radius) = circle {
+    println!("Radius is {radius:?}");
+} else {
+    println!("Not a circle");
+}
+```
 
 ### Using Crates
 
