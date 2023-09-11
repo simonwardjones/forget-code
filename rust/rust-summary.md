@@ -381,6 +381,30 @@ if let Shape::Circle(radius) = circle {
 }
 ```
 
+### Packages, Crates and Modules
+
+ - Crates: A tree of modules that produces a library or executable
+   - Binary crates are programs you can compile to an executable that you can run
+   - Library crates don’t have a main function, and they don’t compile to an executable. Instead, they define functionality intended to be shared with multiple projects.
+   - The crate root is a source file that the Rust compiler starts from
+ - Packages: A bundle of one or more crates that provides a set of functionality
+   - A package contains a Cargo.toml file that describes how to build those crate
+   - A package can contain multiple binary crates and optionally one library crate
+   - By default `src/main.rs` is the crate root of a binary crate with the same name as the package
+   - By default `src/lib.rs` is the crate root of a library crate with the same name as the package
+   - A package can have multiple binary crates by placing files in the `src/bin` directory: each file will be a separate binary crate.
+ - Modules and use: Let you control the organization, scope, and privacy of paths
+   - The can be defined in a file e.g `src/gym.rs` a subfolder `src/gym/mod.rs` or inline using a `mod gym { ... }` block
+   - The may have submodules
+   - Code within a module is private from its parent modules by default
+   - To make items within a public module public as well, use pub before their declarations
+   - You can bring specific paths into scope using use e.g. `use gym::pool::swim` and then just call `swim()`
+ - Paths: A way of naming an item, such as a struct, function, or module
+
+
+
+
+
 ### Using Crates
 
 Add the crate to the dependencies:
