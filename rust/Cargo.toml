@@ -9,5 +9,6 @@ members = [
     "exploration/enums",
     "exploration/structs",
     "exploration/ownership",
+    "exploration/modules",
     "exploration/leet",
 ]
