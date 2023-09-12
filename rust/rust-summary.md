@@ -393,19 +393,31 @@ if let Shape::Circle(radius) = circle {
    - By default `src/main.rs` is the crate root of a binary crate with the same name as the package
    - By default `src/lib.rs` is the crate root of a library crate with the same name as the package
    - A package can have multiple binary crates by placing files in the `src/bin` directory: each file will be a separate binary crate.
- - Modules and use: Let you control the organization, scope, and privacy of paths
-   - The can be defined in a file e.g `src/gym.rs` a subfolder `src/gym/mod.rs` or inline using a `mod gym { ... }` block
-   - The may have submodules
-   - Code within a module is private from its parent modules by default
-   - To make items within a public module public as well, use pub before their declarations
-   - You can bring specific paths into scope using use e.g. `use gym::pool::swim` and then just call `swim()`
  - Paths: A way of naming an item, such as a struct, function, or module
+   - A path for instance could be `modules::gym::cardio::swim`
+   - The `crate` keyword is used to define an absolute path
+   - The `self` and `super` keywords can be used like `.` and `..` in file paths
+ - Modules defined with `mod` and `use` let you control the organization, scope, and privacy of paths
+   - Modules can be defined in a file e.g `src/gym.rs` a subfolder `src/gym/mod.rs` or inline using a `mod gym { ... }` block
+   - Modules may have submodules
+   - Code within a module is private from its parent modules by default
+   - To make items within a public module public as well, use `pub` before their declarations
+   - You can bring specific paths into scope using use e.g. `use gym::pool::swim` and then just call `swim()`
+   - You can use aliases to avoid name collisions and specify multiple parts from the same parent path e.g. `use modules::{main as library_main, swim};`
+   - You can use `*` to glob all names `use modules::gym::*`
+   - Structs individual fields are private by default. You must mark the whole struct as public and expose fields with `pub` as well for users to access them.
+    ```rs
+    pub struct Shake {
+        pub flavour: ShakeFlavour,
+        pub volume: u32,
+        price: u32, // this field is private
+    }
+    ```
+   - Enums fields are public when the enum is.
+   - You can re-expose paths using `pub use path::to::thing`. This is helpful to build a client facing API.
 
 
-
-
-
-### Using Crates
+### Using external Crates
 
 Add the crate to the dependencies:
 ```toml
