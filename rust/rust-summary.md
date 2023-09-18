@@ -431,3 +431,85 @@ use rand::Rng;
 let secret_number = rand::thread_rng().gen_range(1..101);
 ```
 
+
+### Vectors
+
+In rust vectors are used to store arrays of a certain types `Vec<T>`. Similar, but less flexible, to lists in python.
+
+```rs
+let mut v: Vec<i32> = Vec::new(); // initialise empty vector
+let v2 = vec![1, 2, 3]; // initialise vector with values using vec! macro
+v.push(1); // append
+v.extend(&v2); // extend
+for i in &mut v { // loop
+    *i += 10;
+}
+let thirty = &v[1]; // gets value at index 1
+let not_long_enough = v.get(100); // gets value at index 100 or None
+```
+
+### String
+
+The String type is a growable, mutable, owned, UTF-8 encoded string type. This is different to the string slice `&str` which just references some UTF-8 encoded string data. For example string literals are stored in the program's binary and therefore are string slices.
+
+Here we show how to initialise Strings:
+```rs
+let empty_immutable_string = String::new(); // initialise empty String
+let mut s = String::from("simon"); // initialise String from &str
+let mut si = "simon".to_string(); // also initialise String from &str
+```
+
+**Concatenation** can be done with methods, `+` or string `format`:
+```rs
+s.push_str(" says hello"); // push_str appends a literal to a String
+si.push('!'); // push appends a single character to a String
+
+let here = String::from("here");
+let we = String::from("we");
+let go = String::from("go");
+let here_we_go = String::new() + &here + " " + &we + " " + &go + "!";
+// this is a little unwieldy so we can use format!
+let here_we_go_again = format!("{here} {we} {go} again!");
+```
+
+**Looping and length**.
+
+Strings are wrappers around the `Vec<u8>` containing the bytes in the string. Some unicode characters are more than one byte, for example ✅ contains three bytes! The string `len` method returns the number of bytes and we can loop through the bytes using the `bytes()` method. Often the `chars()` method will be more useful returning an iterator over the `char`'s.
+
+### Hash maps
+
+Similar to the `dictionary` of python or the `object` of javascript the hashmap provides a key-value store.
+
+```rs
+let mut basket: HashMap<String, i32> = HashMap::new();
+let apple: String = "apple".to_string();
+let banana: String = "banana".to_string();
+basket.insert(apple, 3);
+basket.insert(banana, 2);
+// For types implementing Copy trait, like i32, the values are copied
+// For types not implementing Copy trait, like String, the values are moved into the hash
+```
+
+Accessing values
+```rs
+// access values
+let _a = basket.get(&apple_clone).expect("should be there"); // Option<&i32>
+let _b = basket["banana"];
+```
+
+Hash maps provide various tools for editing:
+```rs
+// Overwriting a value
+basket.insert(key, 10);
+
+// adding if not there
+basket.entry(String::from("orange")).or_insert(0);
+basket.entry(String::from("banana")).or_insert(0);
+
+// updating a value based on old value using or insert
+let bananas_entry = basket.entry(String::from("banana")).or_insert(0);
+*bananas_entry += 100;
+// using and_modify
+basket.entry(String::from("orange")).and_modify(|v| *v += 1);
+println!("basket={basket:?}");
+```

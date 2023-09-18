@@ -10,5 +10,7 @@ members = [
     "exploration/structs",
     "exploration/ownership",
     "exploration/modules",
+    "exploration/collections",
+
     "exploration/leet",
 ]
