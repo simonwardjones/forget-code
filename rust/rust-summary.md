@@ -513,3 +513,23 @@ let bananas_entry = basket.entry(String::from("banana")).or_insert(0);
 basket.entry(String::from("orange")).and_modify(|v| *v += 1);
 println!("basket={basket:?}");
 ```
+
+
+### Errors
+
+**panic**
+In rust we can use the `panic!` macro to raise an exception. Panics will print a failure message, unwind, clean up the stack, and quit.
+
+**Recoverable Errors with `Result`**
+Instead of panicking a function can instead return a Result enum which is either an `Ok(value)` which wraps the happy result in an `Ok` type or an `Err(error)` which wraps and error in the `Err` type. For example the `File::open` method returns a `Result<std::fs::File, std::io::Error>`, allowing the user to then decide how to handle the scenarios using `match` expressions.
+
+Writing the `match` expressions can be long so the `Result` type has methods such as `unwrap_or_else(func)` and `unwrap()` which both return the value if there is no error and calls the specified func or panics respectively if there is an error. `expect(msg)` is similar to unwrap but allows a custom error message.
+
+
+**Propagating Errors**
+Instead of handling errors a function can just return the error wrapped in a `Result::Err`, this is known as propagating errors.
+
+As it is such a common pattern the `?` operator (placed after the Result) means that if the result is an `Ok`, the value inside the `Ok` will get returned from this expression, and the program will continue. If the value is an `Err`, the `Err` will be returned from the whole function as if we had used the `return` keyword. One technicality is that the `?` operator converts (via the From trait) the error received to the error type defined in the return type of the function.
+
+Note `?` can also be used on a function that returns an `Option<T>` as long as the function is called in a function that returns an `Option<T>`. In this case if the expression returns None the function will return None immediately, if the function returns Some the value within this will be the result of the expression.
+
