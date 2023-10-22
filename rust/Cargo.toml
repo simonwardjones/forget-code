@@ -11,6 +11,6 @@ members = [
     "exploration/ownership",
     "exploration/modules",
     "exploration/collections",
-
+    "exploration/errors",
     "exploration/leet",
 ]
