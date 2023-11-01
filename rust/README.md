@@ -1,5 +1,10 @@
 ## Exploration
 
+To make a new cargo package folder
+```shell
+cargo new <folder-name>
+```
+
 To run any of the sub-folders e.g. `control-flow` use
 ```shell
 cargo run -p control-flow
