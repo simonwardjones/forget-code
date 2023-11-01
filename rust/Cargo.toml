@@ -13,4 +13,5 @@ members = [
     "exploration/collections",
     "exploration/errors",
     "exploration/leet",
+    "exploration/generics",
 ]
