@@ -533,3 +533,6 @@ As it is such a common pattern the `?` operator (placed after the Result) means 
 
 Note `?` can also be used on a function that returns an `Option<T>` as long as the function is called in a function that returns an `Option<T>`. In this case if the expression returns None the function will return None immediately, if the function returns Some the value within this will be the result of the expression.
 
+### Generics
+
+
