@@ -534,5 +534,52 @@ As it is such a common pattern the `?` operator (placed after the Result) means 
 Note `?` can also be used on a function that returns an `Option<T>` as long as the function is called in a function that returns an `Option<T>`. In this case if the expression returns None the function will return None immediately, if the function returns Some the value within this will be the result of the expression.
 
 ### Generics
+`Generics` allow us to define `functions`, `structs` and `enums` which we can use with many concrete data types. For example the max function would ideally work for a vec of i32, u32, f64 or really anything that is comparable. We declare the type parameter in diagonal `<>` brackets. The example below shows the signature for a shuffle method.
 
+```rs
+fn shuffle<T>(list: &mut [T]) -> &mut [T] {
+```
+Similar for structs
+```rs
+struct Point<T> {
+    x: T,
+    y: T,
+}
+```
 
+You can use multiple type parameters as you might expect:
+```rs
+struct Point<T, U> {
+    x: T,
+    y: U,
+}
+```
+
+The `Option` and `Result` enum types we met earlier are a great examples of generics:
+```rs
+enum Option<T> {
+    None,
+    Some(T),
+}
+enum Result<T, E> {
+    Ok(T),
+    Err(E),
+}
+```
+
+**Generic methods**
+We can implement methods on a generic type e.g.
+```rs
+impl<T> Point<T> {
+    fn x(&self) -> &T {
+        &self.x
+    }
+}
+```
+or for a specific type e.g f32. Only instances of `Point<f32>` will have the `distance_from_origin` method.
+```rs
+impl Point<f32> {
+    fn distance_from_origin(&self) -> f32 {
+        ...
+```
+The process of monomorphization (replacing generic code with type specific during compiling) makes Rust’s generics extremely efficient at runtime.

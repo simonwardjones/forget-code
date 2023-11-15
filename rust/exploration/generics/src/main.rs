@@ -4,10 +4,12 @@ use rand::Rng;
 fn main() {
     per_type_functions();
     generic_functions();
+    generic_structs();
     custom_trait();
 }
 
 fn per_type_functions() {
+    println!("Per type functions");
     let mut example_vec: Vec<i32> = vec![1, 2, 3, 4, 5];
     let mut example_array: [i32; 5] = [1, 2, 3, 4, 5];
     println!("Before shuffle example_array: {:?}", example_array);
@@ -28,6 +30,7 @@ fn per_type_functions() {
 }
 
 fn generic_functions() {
+    println!("Generic functions");
     let mut example_vec: Vec<i32> = vec![1, 2, 3, 4, 5];
     let mut example_array: [i32; 5] = [1, 2, 3, 4, 5];
     println!("Before shuffle example_array: {:?}", example_array);
@@ -78,6 +81,63 @@ fn shuffle<T>(array: &mut [T]) -> &mut [T] {
     array
 }
 
+#[derive(Debug)]
+struct Bag<T> {
+    brand: String,
+    items: Vec<T>,
+}
+impl<T> Bag<T> {
+    fn get_first_item(&self) -> Option<&T> {
+        self.items.first()
+    }
+}
+impl Bag<JugglingBall> {
+    fn juggle(&mut self) {
+        self.items = shuffle(&mut self.items).iter()
+    }
+}
+
+#[derive(Debug)]
+enum JugglingBallColour {
+    Red,
+    Blue,
+    Green,
+}
+#[allow(dead_code)]
+#[derive(Debug)]
+struct JugglingBall {
+    colour: JugglingBallColour,
+}
+// cheeky aliasing of a type here for brevity
+type JBC = JugglingBallColour;
+
+fn generic_structs() {
+    println!("Generic structs");
+    println!("Here we make two bags, one with strings and one with juggling balls");
+    let nike_bag: Bag<&str> = Bag {
+        brand: String::from("Nike"),
+        items: vec!["hat", "shirt", "pants"],
+    };
+    let juggling_bag: Bag<JugglingBall> = Bag {
+        brand: String::from("Clown max"),
+        items: vec![
+            JugglingBall { colour: JBC::Red },
+            JugglingBall { colour: JBC::Blue },
+            JugglingBall { colour: JBC::Green },
+        ],
+    };
+    println!("My {}  bag has items {:?}", nike_bag.brand, nike_bag.items);
+    println!(
+        "My {}  bag has items {:?}",
+        juggling_bag.brand, juggling_bag.items
+    );
+    println!(
+        "The first item in nike_bag is {:?}",
+        nike_bag.get_first_item()
+    );
+    juggling_bag.juggle();
+}
+
 pub trait Len {
     fn len(&self) -> usize;
 }
@@ -105,8 +165,10 @@ where
 }
 
 fn custom_trait() {
+    println!("Custom traits");
     let example_vec: Vec<i32> = vec![1, 2, 3, 4, 5];
     let example_array: [i32; 5] = [1, 2, 3, 4, 5];
     println!("example_vec has len {}", get_len(example_vec));
     println!("example_array has len {}", get_len(&example_array));
+    println!();
 }
