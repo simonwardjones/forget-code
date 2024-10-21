@@ -90,9 +90,11 @@ fn struct_update_syntax_example() {
 }
 
 fn tuple_structs_example() {
+    #[allow(dead_code)]
     #[derive(Debug)]
     struct Coordinate(i32, i32);
 
+    #[allow(dead_code)]
     #[derive(Debug)]
     struct Rectangle(i32, i32);
 

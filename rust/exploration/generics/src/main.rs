@@ -72,13 +72,12 @@ fn shuffle_f64_slice(array: &mut [f64]) -> &mut [f64] {
     array
 }
 
-fn shuffle<T>(array: &mut [T]) -> &mut [T] {
+fn shuffle<T>(array: &mut [T]) {
     let mut rng = rand::thread_rng();
     for i in 0..array.len() {
         let j = rng.gen_range(0..array.len());
         array.swap(i, j);
     }
-    array
 }
 
 #[derive(Debug)]
@@ -93,7 +92,7 @@ impl<T> Bag<T> {
 }
 impl Bag<JugglingBall> {
     fn juggle(&mut self) {
-        self.items = shuffle(&mut self.items).iter()
+        shuffle(&mut self.items)
     }
 }
 
@@ -118,7 +117,7 @@ fn generic_structs() {
         brand: String::from("Nike"),
         items: vec!["hat", "shirt", "pants"],
     };
-    let juggling_bag: Bag<JugglingBall> = Bag {
+    let mut juggling_bag: Bag<JugglingBall> = Bag {
         brand: String::from("Clown max"),
         items: vec![
             JugglingBall { colour: JBC::Red },
