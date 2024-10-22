@@ -32,9 +32,11 @@ from typing import (
     Protocol,
     Self,
     TypeAlias,
+    TypeGuard,
     TypedDict,
     TypeVar,
     overload,
+    runtime_checkable,
 )
 
 name: str = "James"
@@ -64,7 +66,7 @@ staff: dict[str, str | list[str] | None] = {
 }
 # Note pre python 3.10 you would have to use the following syntax
 #
-# staff: dict[str, Optional[Union[str, list[str]]]]
+# staff: Dict[str, Optional[Union[str, List[str]]]]
 #
 # The | operator is a shorthand for Union introduced in python 3.10
 # Optional[T] is a shorthand for Union[T, None] or T | None
@@ -93,12 +95,14 @@ bob_customer_three: Customer1 = Customer1("Bob", 30)
 #########################
 # Static type checking  #
 #########################
+
 # We can use a static type checker such as mypy
 # or pyright to check our type hints for errors.
 
 # If you have a type checker like Pylance in vscode
 # uncomment the below to show and error as customers
 # is expected to be a list of strings
+
 # customers = "bob, janet"
 
 ###############
@@ -155,9 +159,11 @@ class Light:
 
 lamp = Light("on")
 
-# lamp.set_switch("Off") # uncomment to see the error
-# note it is often good to use an enum instead of a literal
+# Uncomment below to see the error.
+# Note it is often good to use an enum instead of a literal
 # to make it more readable and maintainable.
+
+# lamp.set_switch("Off")
 
 
 ##############
@@ -185,12 +191,14 @@ class CustomerData(TypedDict):
 bill: CustomerData = {"name": "Bill", "surname": "Smith"}
 
 
-# uncomment the following lines to see the error highlighting
+# Uncomment the following lines to see the error highlighting.
+# The three examples show, typos, missing fields and extra fields.
+
 # bad_bill_1:Customer = {"name": "Bill", "sur_name": "Smith"}
 # bad_bill_2:Customer = {"name": "Bill"}
 # bad_bill_2:Customer = {**bill, "height": 177}
 
-# also try bill[] in the editor to see the available fields
+# Also try bill[] in the editor to see the available fields.
 
 
 ######################
@@ -219,6 +227,7 @@ custom_customer: Customer = Customer("Bob", "Geldof")
 
 # Note to type hint the class itself we can use type[ClassName]
 # Prior to python 3.9 you would use typing.Type[ClassName]
+
 CustomerClass: type[Customer] = Customer
 
 
@@ -226,19 +235,38 @@ CustomerClass: type[Customer] = Customer
 # Function Signatures #
 #######################
 
+# In the function below we show how to define
+# function argument types and return types.
+
 
 def add_surname(name: str) -> str:
     return name + " Smith"
 
 
-# In the above function we show how to define
-# function argument types and return types.
+# In the function below we show how to define
+# types for *args and **kwargs.
+# Note all args are considered to be of type int
+# and all kwargs are considered to be of type str.
+
+# Hence args: tuple[int, ...] and kwargs: dict[str, str]
+
+
+def args_and_kwargs(*args: int, **kwargs: str) -> None:
+    print(args)
+    print(kwargs)
+
+
+##################
+# Type narrowing #
+##################
 
 
 # Type narrowing is a feature of a type checker that allows
 # the type checker to infer a more specific type for a variable
 # e.g. hover over the employee variable to see the type
 # in each branch.
+
+
 def display_staff(staff: dict[str, str | list[str] | None]) -> None:
     for role, employees in staff.items():
         if employees is None:
@@ -247,6 +275,11 @@ def display_staff(staff: dict[str, str | list[str] | None]) -> None:
             print(f"{role}: {employees}")
         else:
             print(f"{role}: {', '.join(employees)}")
+
+
+##################
+# Callable types #
+##################
 
 
 def modify_customers(
@@ -259,22 +292,23 @@ def modify_customers(
 customers_with_surnames = modify_customers(customers, add_surname)
 
 # Notice the use of Iterable and Callable from the typing module.
+
+# Tip:
 # In general use abstract types for input arguments and concrete types
 # for output arguments. Iterable is an abstract type that can be used
-# for any iterable type such as lists, tuples, sets
-# for example:
+# for any iterable type such as lists, tuples, sets.
+# For example:
 
 tuple_customers = modify_customers(("Jim", "Jane", "John"), add_surname)
 
 
-#######################
-# Structural typing
-# Protocols
-#######################
+###################################
+# Structural typing and Protocols #
+###################################
 
 # Prior to # https://peps.python.org/pep-0544/
 # The only way to specify typing was via nominal typing
-# i.e. where by you would have to inherit from a class
+# i.e. you would have to inherit from a class
 # to be considered a certain type.
 
 # With the introduction of protocols we can now use structural
@@ -305,8 +339,13 @@ def display(entity: HasDisplay) -> None:
     entity.display()
 
 
-bob = Human("Bob", 30)
-display(bob)
+age = 10
+bob: Human | None
+if age < 100:
+    bob = Human("Bob", age)
+    display(bob)
+else:
+    bob = None
 
 # Note the standard library has a lot of protocols defined
 # e.g.
@@ -322,12 +361,27 @@ display(bob)
 # - SupportsInt
 # - SupportsRound
 
-# note the use of the ClassVar attribute in the Human class
+# Note at runtime bob is not considered to be of type HasDisplay.
+
+# In fact running isinstance(bob, HasDisplay) will raise an error.
+# If you want to enable runtime checking you can use the
+# runtime_checkable decorator.
 
 
-#######################
-# Type Variables
-#######################
+@runtime_checkable
+class HasDisplay2(Protocol):
+    def display(self) -> None: ...
+
+
+print("Is bob an instance of HasDisplay2?", isinstance(bob, HasDisplay2))
+
+
+# Note the use of the ClassVar attribute in the Human class
+
+
+##################
+# Type Variables #
+##################
 
 
 # We can also parametrise types for more flexibility
@@ -362,9 +416,9 @@ def zip_with_size2[T: (Sized)](items: Iterable[T]) -> list[tuple[T, int]]:
     return [(item, len(item)) for item in items]
 
 
-########################################
-# ParamSpecs, Concat and Type Var tuples
-########################################
+##########################################
+# ParamSpecs, Concat and Type Var tuples #
+##########################################
 
 # https://peps.python.org/pep-0612/
 
@@ -412,9 +466,9 @@ def complex_function(
 slow_complex_function = slow_down2(complex_function)
 
 
-#######################
-# User Defined generics
-#######################
+#########################
+# User Defined generics #
+#########################
 
 
 class Pair[T1, T2]:
@@ -449,9 +503,9 @@ class Pair2(Generic[T1, T2]):
 # variable as Pair[str, int].
 
 
-#######################
-# Overloading
-#######################
+###############
+# Overloading #
+###############
 
 
 @overload
@@ -516,4 +570,56 @@ def or_hi(a: str, b: bool = False):
     return a if b else "hi"
 
 
-reveal_type(or_hi)
+if typing.TYPE_CHECKING:
+    reveal_type(or_hi)
+
+
+##############
+# Type Guard #
+##############
+
+# https://peps.python.org/pep-0647/
+
+
+def has_multiple_employees(employees: str | list[str] | None) -> bool:
+    return isinstance(employees, list) and all(
+        not employee.endswith("bot") for employee in employees
+    )
+
+
+def get_first_department(
+    staff: dict[str, str | list[str] | None]
+) -> str | list[str] | None:
+    for employees in staff.values():
+        if has_multiple_employees(employees):
+            return employees
+    return None
+
+
+department = get_first_department(staff)
+
+# In the above code the type checker will infer the type of the
+# department variable as str | list[str] | None
+
+# However we know that the department variable will always be a list
+# of strings or None. We can use a type guard to narrow the type!
+
+# Type guards are used to tell the type checker that the return type
+# is a bool and that the input type is a list of strings when the
+# function returns True.
+
+
+def has_multiple_employees2(employees: str | list[str] | None) -> TypeGuard[list[str]]:
+    return isinstance(employees, list) and all(
+        not employee.endswith("bot") for employee in employees
+    )
+
+
+def get_first_department2(staff: dict[str, str | list[str] | None]) -> list[str] | None:
+    for employees in staff.values():
+        if has_multiple_employees2(employees):
+            return employees
+    return None
+
+
+department2 = get_first_department2(staff)
