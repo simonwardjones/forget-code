@@ -75,7 +75,7 @@ jobs:
             try {
               const comment = await github.rest.reactions.createForIssueComment({
                 ...context.repo,
-                comment_id: context.comment.id,
+                comment_id: ${{ github.event.comment.id }},
                 content: "rocket"
               });
             } catch (err) {
