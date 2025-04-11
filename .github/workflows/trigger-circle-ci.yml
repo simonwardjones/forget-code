@@ -28,6 +28,7 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
+            console.log(context)
             if (context.issue.number == null) {
               core.info(`NO PR found.`)
               return ""
