@@ -15,12 +15,12 @@ jobs:
       - run: |
           echo "Body of the comment:"
           cat << 'EOF'
-          ${{ toJSON(github.event.issue.comment.body) }}
+          ${{ toJSON(github.event.comment.body) }}
           EOF
   trigger-circleci:
     name: Trigger end to end build
     # Only run if the comment was made on a PR and it contains the magic string
-    if: github.event.issue.pull_request && contains(github.event.issue.comment.body, '/regression-test')
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '/regression-test')
     runs-on: ubuntu-latest
     steps:
       - name: Get PR Target
