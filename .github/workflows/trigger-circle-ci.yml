@@ -51,14 +51,34 @@ jobs:
             }
       - name: Trigger End-To-End Build
         run: |
-          echo curl -u ${CCI_TOKEN}: -X POST --header "Content-Type: application/json" -d '{
-          "branch": "'"${GHA_SOURCE_BRANCH}"'",
-          "parameters": {
-            "e2e-test":"e2e_test",
-          }}' ${CIRCLE_PIPELINE_URL}
+          echo curl --request POST \
+            --url "${CIRCLE_PIPELINE_URL}" \
+            --header "Circle-Token: ${CCI_TOKEN}" \
+            --header "content-type: application/json" \
+            --data '{
+            "definition_id": "${DEFINITION_ID}",
+            "config": {"branch": "${GHA_SOURCE_BRANCH}"},
+            "checkout": {"branch": "${GHA_SOURCE_BRANCH}"},
+            "parameters": {"e2e-test": true}
+            }'
         env:
           CCI_TOKEN: ${{ secrets.CCI_TOKEN }}
-          CIRCLE_PIPELINE_URL: https://circleci.com/api/v2/project/gh/deliveroo/ad-platform-algos-dbt/pipeline
+          DEFINITION_ID: "5c5ab759-fd2b-5488-b668-f718495e99d3"
+          CIRCLE_PIPELINE_URL: "https://circleci.com/api/v2/project/gh/simonwardjones/forget_code/run"
           GHA_SOURCE_BRANCH: ${{ fromJSON(steps.get_pr_info.outputs.result).head.ref }}
           GHA_TARGET_BRANCH: ${{ fromJSON(steps.get_pr_info.outputs.result).base.ref }}
           GHA_REF: refs/pull/${{fromJSON(steps.get_pr_info.outputs.result).number}}/merge
+      - name: Add rocket emojis to the comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            try {
+              const comment = await github.rest.reactions.createForIssueComment({
+                ...context.repo,
+                comment_id: context.comment.id,
+                content: "rocket"
+              });
+            } catch (err) {
+              core.error(`Request failed with error: ${err.message}`)
+              core.error(`Stack trace: ${err.stack}`)
+            }
