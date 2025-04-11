@@ -3,3 +3,5 @@
 ## About
 
 General learning repo for code.
+
+:smile:
