@@ -163,7 +163,7 @@ lamp = Light("on")
 # Note it is often good to use an enum instead of a literal
 # to make it more readable and maintainable.
 
-# lamp.set_switch("Off")
+# lamp.set_switch("off")
 
 
 ##############
@@ -176,6 +176,8 @@ more_customers: Customers = ["Sandra", "Sally", "Sue"]
 ##################
 # TypedDict Type #
 ##################
+
+x: dict[str, int | str] = {"a_int": "1", "b": "two"}
 
 # Rather than just using a dictionary we can use TypedDict
 # better than dict[str, str] as it is more descriptive
@@ -194,9 +196,9 @@ bill: CustomerData = {"name": "Bill", "surname": "Smith"}
 # Uncomment the following lines to see the error highlighting.
 # The three examples show, typos, missing fields and extra fields.
 
-# bad_bill_1:Customer = {"name": "Bill", "sur_name": "Smith"}
-# bad_bill_2:Customer = {"name": "Bill"}
-# bad_bill_2:Customer = {**bill, "height": 177}
+# bad_bill_1: CustomerData = {"name": "Bill", "sur_name": "Smith"}
+# bad_bill_2:CustomerData = {"name": "Bill"}
+# bad_bill_2:CustomerData = {**bill, "age": 177}
 
 # Also try bill[] in the editor to see the available fields.
 
@@ -281,6 +283,10 @@ def display_staff(staff: dict[str, str | list[str] | None]) -> None:
 # Callable types #
 ##################
 
+def example_callable(x:int) -> str:
+    return str(x)
+
+a : Callable[[int], str] = example_callable
 
 def modify_customers(
     customers: Iterable[str], modifier: Callable[[str], str]
@@ -318,12 +324,12 @@ tuple_customers = modify_customers(("Jim", "Jane", "John"), add_surname)
 # For example we can define a protocol for a class that
 # has a display method.
 
-
+@runtime_checkable
 class HasDisplay(Protocol):
     def display(self) -> None: ...
 
 
-class Human:
+class Human():
     planet: ClassVar[str] = "Earth"
 
     def __init__(self, name: str, age: int) -> None:
@@ -362,6 +368,7 @@ else:
 # - SupportsRound
 
 # Note at runtime bob is not considered to be of type HasDisplay.
+
 
 # In fact running isinstance(bob, HasDisplay) will raise an error.
 # If you want to enable runtime checking you can use the
